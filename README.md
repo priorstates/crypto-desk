@@ -3,6 +3,8 @@
 A paper trading desk for Coinbase, built in [PriorStates Studio](https://priorstates.com/hub.html) by asking for it.
 Open it in your own Studio, point it at your own server, and change it by asking.
 
+**Slides:** [how this desk was built, run and shared in Studio](slides/crypto_desk_deck.pdf) (24 pages, PDF).
+
 **Paper trading only.** No exchange account, no API key, and no code that sends an order. The desk reads Coinbase's
 public market data feed and simulates its own fills.
 
