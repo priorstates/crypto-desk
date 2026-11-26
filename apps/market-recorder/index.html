@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Recorder</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header>
+  <h1>📼 <span data-t="title"></span></h1>
+  <p class="sub" data-t="sub"></p>
+</header>
+<main>
+  <div id="banner" class="banner" hidden></div>
+  <section id="services"></section>
+  <section id="products" class="grid"></section>
+  <section class="card" id="disk">
+    <h2 data-t="disk"></h2>
+    <div class="bar"><i id="diskBar"></i></div>
+    <div class="row3">
+      <div><b id="diskUsed">–</b><span data-t="used"></span></div>
+      <div><b id="diskCap">–</b><span data-t="cap"></span></div>
+      <div><b id="diskFree">–</b><span data-t="free"></span></div>
+    </div>
+    <p class="muted" id="diskNote"></p>
+  </section>
+  <section class="card">
+    <h2 data-t="gaps"></h2>
+    <p class="muted" id="gapsEmpty" data-t="noGaps"></p>
+    <div class="scroll"><table id="gapsTable" hidden>
+      <thead><tr><th data-t="product"></th><th data-t="start"></th><th data-t="length"></th><th data-t="reason"></th><th data-t="missed"></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+  <section class="card">
+    <h2 data-t="settings"></h2>
+    <form id="settings">
+      <label><span data-t="sProducts"></span><input name="products" required></label>
+      <label><span data-t="sFolder"></span><input name="data_dir" required></label>
+      <label><span data-t="sCap"></span><input name="cap_gb" type="number" min="0" step="any" required></label>
+      <label><span data-t="sKeep"></span><input name="keep_days" type="number" min="0" step="1" required></label>
+      <label><span data-t="sFree"></span><input name="min_free_gb" type="number" min="0" step="any" required></label>
+      <button data-t="save"></button>
+    </form>
+    <p class="muted" data-t="settingsNote"></p>
+  </section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "Research Notebook",
+  "icon": "🔬",
+  "description": "Studies spreads, volatility and how prices move after trades, from the Market Recorder's files and the paper strategy's fills.",
+  "entry": "index.html",
+  "version": 1,
+  "permissions": ["python"],
+  "runs": ["computer"],
+  "wide": true,
+  "role": "viewer",
+  "skill": "Python app (main.py is thin; the work is in nb/). Copies Market Recorder's daily files (<PRODUCT>/quotes|trades/<day>.<NNN>.csv.gz, gaps/<day>.jsonl) and Paper Market Maker's fills/<day>.jsonl(.gz) from the server over ssh (read only: find, cat, tail) into data/mirror/market and data/mirror/paper; never removes days there or here. data/settings.json: host, market_dir, fills_dir, paper_product, gap_silence_s, markout_ms, vol_horizons_s, size_buckets_usd, auto_sync_min (defaults and checks in nb/conf.py DEFAULTS). data/sync.json: {t, ok, error} of the last copy. data/cache/<study>/<product>/<day>.json: {key, part}, one day's mergeable part of a study, redone when the source files' sizes, the numbers (params) or nb/studies.py VERSION change. data/studies/<id>.json: a saved study {id, name, study (spreads|vol|markout|paper), product, from, to, open_end (runs through the latest day when rerun), params, result, saved_at}. Studies use the exchange's time (exch_ns); each result has sample (days, quotes, covered_s, gaps skipped). The file formats are in market-recorder's and paper-market-maker's remote/README.md."
+}

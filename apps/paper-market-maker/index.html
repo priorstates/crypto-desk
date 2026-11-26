@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Market Maker</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>🧾 <span data-t="title"></span> <span class="tag" data-t="paper"></span></h1>
+    <p class="sub" data-t="sub"></p>
+  </div>
+  <div class="actions">
+    <button id="resume" data-t="resume"></button>
+    <button id="stop" class="danger" data-t="stop"></button>
+  </div>
+</header>
+<main>
+  <div id="banner" class="banner" hidden></div>
+  <section class="tiles">
+    <article class="card" id="stateCard">
+      <small data-t="state"></small>
+      <b id="state" class="pill">–</b>
+      <p class="muted" id="why"></p>
+    </article>
+    <article class="card" id="posCard">
+      <small data-t="position"></small>
+      <b id="pos">–</b>
+      <div class="bar mid"><i id="posBar"></i></div>
+      <p class="muted" id="posNote"></p>
+    </article>
+    <article class="card" id="pnlCard">
+      <small data-t="dayPnl"></small>
+      <b id="dayPnl">–</b>
+      <div class="bar"><i id="lossBar"></i></div>
+      <p class="muted" id="pnlNote"></p>
+    </article>
+    <article class="card" id="fillsCard">
+      <small data-t="fillsToday"></small>
+      <b id="fillsN">–</b>
+      <p class="muted" id="fillsNote"></p>
+    </article>
+  </section>
+  <section class="card" id="quotes">
+    <div class="headrow top">
+      <h2 data-t="quotes"></h2>
+      <span id="qSpread" class="spread"></span>
+    </div>
+    <div class="ladder">
+      <div><small data-t="ourBid"></small><b id="qBid">–</b><em id="qBidSize"></em><em id="qBidGap"></em></div>
+      <div><small data-t="mktBid"></small><b id="mBid">–</b></div>
+      <div><small data-t="mktAsk"></small><b id="mAsk">–</b></div>
+      <div><small data-t="ourAsk"></small><b id="qAsk">–</b><em id="qAskSize"></em><em id="qAskGap"></em></div>
+    </div>
+  </section>
+  <section class="card" id="chartCard">
+    <div class="headrow top">
+      <h2 data-t="chart"></h2>
+      <div class="legend" id="fillLegend">
+        <span><i class="dot buy"></i><span data-t="buyFill"></span></span>
+        <span><i class="dot sell"></i><span data-t="sellFill"></span></span>
+      </div>
+    </div>
+    <div id="chart" class="chart"></div>
+  </section>
+  <section class="card" id="markoutCard">
+    <h2 data-t="markouts"></h2>
+    <p class="muted note" data-t="moNote"></p>
+    <p class="muted" id="moEmpty" data-t="moEmpty"></p>
+    <div class="scroll"><table id="moTable" class="mo" hidden>
+      <thead><tr><th data-t="moAvg"></th><th data-t="mo1"></th><th data-t="mo5"></th><th data-t="mo30"></th><th data-t="moFills"></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div id="moChartWrap" hidden>
+      <div class="headrow">
+        <h3 data-t="moRunning"></h3>
+        <select id="moSide" aria-label="Fills">
+          <option value="all" data-t="allFills"></option>
+          <option value="buy" data-t="buys"></option>
+          <option value="sell" data-t="sells"></option>
+        </select>
+        <div class="legend" id="moLegend"></div>
+      </div>
+      <div id="moChart" class="chart"></div>
+    </div>
+  </section>
+  <section class="card" id="lastFills">
+    <h2 data-t="lastFills"></h2>
+    <p class="muted" id="fillsEmpty" data-t="noFills"></p>
+    <div class="scroll"><table id="fillsTable" hidden>
+      <thead><tr><th data-t="time"></th><th data-t="side"></th><th data-t="price"></th><th data-t="size"></th>
+        <th data-t="kind"></th><th data-t="fillPnl"></th><th data-t="posAfter"></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+  <section class="card">
+    <h2 data-t="settings"></h2>
+    <form id="settings">
+      <label><span data-t="sHalf"></span><input name="half_spread_bps" type="number" min="0" step="any" required></label>
+      <label><span data-t="sSize"></span><input name="quote_size" type="number" min="0" step="any" required></label>
+      <label><span data-t="sSkew"></span><input name="skew_bps" type="number" min="0" step="any" required></label>
+      <label><span data-t="sRequote"></span><input name="requote_bps" type="number" min="0" step="any" required></label>
+      <label><span data-t="sMaxPos"></span><input name="max_position" type="number" min="0" step="any" required></label>
+      <label><span data-t="sLoss"></span><input name="daily_loss_limit" type="number" min="0" step="any" required></label>
+      <label><span data-t="sStale"></span><input name="stale_s" type="number" min="0" step="any" required></label>
+      <label><span data-t="sFolder"></span><input name="data_dir" required></label>
+      <label><span data-t="sKeep"></span><input name="keep_days" type="number" min="0" step="1" required></label>
+      <button data-t="save"></button>
+    </form>
+    <p class="muted" data-t="settingsNote"></p>
+  </section>
+  <section id="services"></section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

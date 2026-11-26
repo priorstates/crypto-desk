@@ -1,0 +1,27 @@
+{
+  "canvas": {
+    "frames": [],
+    "holders": [],
+    "links": [
+      {"from":"market-recorder","id":"d545cf72","label":"live quotes and trades","to":"paper-market-maker"},
+      {"from":"market-recorder","id":"61e5519f","label":"heartbeat, feed age","to":"risk-monitor"},
+      {"from":"paper-market-maker","id":"5745461e","label":"position, PnL","to":"risk-monitor"},
+      {"from":"risk-monitor","id":"4458585d","label":"stop and flatten","to":"paper-market-maker"},
+      {"from":"market-recorder","id":"3538b18b","label":"recorded files","to":"research-notebook"},
+      {"from":"paper-market-maker","id":"7b1eb514","label":"simulated fills","to":"research-notebook"},
+      {"from":"risk-monitor","id":"33ea1733","label":"breaches, stale feed, cleared","to":"desk-reports"},
+      {"from":"paper-market-maker","id":"4119d6ef","label":"PnL, fills, markouts","to":"desk-reports"},
+      {"from":"market-recorder","id":"0507373e","label":"gaps, message rates","to":"desk-reports"}
+    ],
+    "notes": [
+      {"gid":"g0d7f1df0","id":"f06043ee","text":"Decided 26 Nov: paper only, no real orders. Top of book + trades, no depth. Fill only when a trade prints through our price. Max position 0.25 BTC either way, daily loss 300 USD: flatten and stop quoting. Alerts on this computer.","w":220,"x":null,"y":null}
+    ],
+    "pos": {}
+  },
+  "groups": [
+    {"id":"g0","ids":["market-recorder","paper-market-maker","risk-monitor","desk-reports"],"name":"Runs on your server"},
+    {"id":"g0d7f1df0","ids":["research-notebook"],"name":"Research"}
+  ],
+  "icon": "📈",
+  "name": "Crypto desk"
+}

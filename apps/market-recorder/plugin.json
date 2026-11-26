@@ -1,0 +1,11 @@
+{
+  "name": "Market Recorder",
+  "icon": "📼",
+  "description": "Records BTC-USD and ETH-USD top of book and trades from Coinbase's public feed, around the clock on trade1.",
+  "entry": "index.html",
+  "version": 1,
+  "permissions": [],
+  "runs": ["computer"],
+  "role": "service",
+  "skill": "A service (remote/, deployed to trade1 at ~/market-recorder, service name \"recorder\") plus a status page. The page saves nothing of its own: it reads the streams \"heartbeat\" and \"gaps\" and the service settings (products, data_dir, cap_gb, keep_days, min_free_gb; defaults in remote/conf.py DEFAULTS and js/app.js DEFAULTS). remote/README.md lists the recorded files' columns, the live socket's messages, heartbeat.json's fields and the streams; Paper Market Maker, Risk Monitor and Research Notebook depend on those, so keep them stable."
+}

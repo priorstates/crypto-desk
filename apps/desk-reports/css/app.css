@@ -1,0 +1,69 @@
+:root {
+  --bg: #f5f6f8; --card: #fff; --ink: #172033; --muted: #5d6b82; --line: #dfe4ec;
+  --ok: #17803d; --warn: #b45309; --bad: #c62828; --accent: #2456c7;
+  --ok-bg: #e8f5ec; --bad-bg: #fdecec; --warn-bg: #fdf3e2;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --card: #1a2029; --ink: #e8ecf3; --muted: #9aa7bb; --line: #2c3542;
+  --ok: #4ade80; --warn: #fbbf24; --bad: #f87171; --accent: #7aa2ff;
+  --ok-bg: #14271c; --bad-bg: #321a1c; --warn-bg: #30260f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+html body { max-width: none !important; width: auto !important; padding: 0 !important; }   /* a wide page */
+header, main { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+header { padding-top: 22px; }
+h1 { font-size: 22px; margin: 0; }
+h2 { font-size: 15px; margin: 0 0 8px; }
+.sub, .muted { color: var(--muted); margin: 4px 0 0; font-size: 13px; }
+main { padding-bottom: 40px; }
+section { margin-top: 16px; }
+[hidden] { display: none !important; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.card.bad { border-color: var(--bad); background: var(--bad-bg); }
+.card.bad h2 { color: var(--bad); }
+.card.bad p { margin: 2px 0 0; overflow-wrap: anywhere; }
+.banner { margin-top: 16px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--warn);
+  color: var(--warn); background: var(--card); font-weight: 600; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+button { padding: 9px 18px; border: 0; border-radius: 8px; background: var(--accent); color: #fff;
+  font: inherit; font-weight: 600; cursor: pointer; white-space: nowrap; }
+:root[data-theme="dark"] button { color: #0d1320; }
+button.small { padding: 7px 14px; font-size: 13px; }
+button.ghost, :root[data-theme="dark"] button.ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+button:disabled { opacity: .45; cursor: default; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.tiles small { color: var(--muted); font-size: 12px; display: block; }
+.tiles b { font-size: 22px; font-variant-numeric: tabular-nums; display: inline-block; margin: 4px 0; }
+.s-ok { color: var(--ok); } .s-warn { color: var(--warn); } .s-bad { color: var(--bad); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.chip { display: inline-block; font-size: 12px; border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px;
+  color: var(--muted); max-width: 100%; overflow-wrap: anywhere; }
+.chip.ok { border-color: var(--ok); color: var(--ok); }
+.chip.bad { border-color: var(--bad); color: var(--bad); }
+.chip.warn { border-color: var(--warn); color: var(--warn); }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 14px 8px 0; border-bottom: 1px solid var(--line); white-space: nowrap; vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { color: var(--muted); font-weight: 500; font-size: 13px; }
+td.wrap { white-space: normal; min-width: 220px; }
+td .chips { margin: 0; }
+fieldset { border: 0; border-top: 1px solid var(--line); margin: 0; padding: 12px 0 14px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; align-items: end; }
+legend { padding: 0 8px 0 0; font-size: 13px; font-weight: 600; }
+label span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+label.two { grid-column: span 2; }
+label.tick { display: flex; align-items: center; gap: 8px; min-height: 38px; }
+label.tick span { margin: 0; font-size: 14px; color: var(--ink); }
+label.tick input { width: 18px; height: 18px; margin: 0; }
+input, select { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg); color: var(--ink); font: inherit; }
+.secret { display: grid; grid-template-columns: 230px 1fr auto auto; gap: 10px; align-items: center; margin-top: 12px; }
+@media (max-width: 720px) {
+  .secret { grid-template-columns: 1fr 1fr; } .secret > div, .secret > input { grid-column: span 2; }
+  label.two { grid-column: auto; } .row button { width: 100%; }
+}

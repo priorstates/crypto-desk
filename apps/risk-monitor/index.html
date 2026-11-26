@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk Monitor</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>🛡️ <span data-t="title"></span></h1>
+    <p class="sub" data-t="sub"></p>
+  </div>
+</header>
+<main>
+  <div id="banner" class="banner" hidden></div>
+  <section id="summary" class="summary">
+    <b id="sumText">–</b>
+    <span id="sumNote"></span>
+  </section>
+  <section id="stopCard" class="card stop" hidden>
+    <div>
+      <h2 data-t="stopOn"></h2>
+      <p id="stopWhy"></p>
+      <p class="muted" id="stopNote"></p>
+    </div>
+    <button id="clear" class="danger" data-t="clearStop"></button>
+  </section>
+  <section class="tiles">
+    <article class="card" id="posCard">
+      <small data-t="position"></small>
+      <b id="pos">–</b>
+      <div class="bar mid"><i id="posBar"></i></div>
+      <p class="muted" id="posNote"></p>
+    </article>
+    <article class="card" id="pnlCard">
+      <small data-t="dayPnl"></small>
+      <b id="dayPnl">–</b>
+      <div class="bar"><i id="lossBar"></i></div>
+      <p class="muted" id="pnlNote"></p>
+    </article>
+    <article class="card" id="makerCard">
+      <small data-t="strategy"></small>
+      <b id="maker">–</b>
+      <p class="muted" id="makerNote"></p>
+    </article>
+  </section>
+  <section class="card" id="checksCard">
+    <h2 data-t="checks"></h2>
+    <div class="scroll"><table id="checks">
+      <thead><tr><th data-t="check"></th><th data-t="state"></th><th data-t="now"></th><th data-t="since"></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+  <section class="card" id="historyCard">
+    <h2 data-t="history"></h2>
+    <p class="muted" id="histEmpty" data-t="noEvents"></p>
+    <div class="scroll"><table id="events" hidden>
+      <thead><tr><th data-t="time"></th><th data-t="event"></th><th data-t="lasted"></th><th data-t="stopCol"></th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+  <section class="card" id="settingsCard">
+    <h2 data-t="settings"></h2>
+    <form id="settings">
+      <label><span data-t="sStale"></span><input name="stale_s" type="number" min="0" step="any" required></label>
+      <label><span data-t="sHb"></span><input name="hb_stale_s" type="number" min="0" step="any" required></label>
+      <label><span data-t="sMaxPos"></span><input name="max_position" type="number" min="0" step="any" required></label>
+      <label><span data-t="sLoss"></span><input name="max_day_loss" type="number" min="0" step="any" required></label>
+      <label><span data-t="sDisk"></span><input name="min_free_gb" type="number" min="0" step="any" required></label>
+      <label><span data-t="sRemind"></span><input name="remind_min" type="number" min="0" step="any" required></label>
+      <button data-t="save"></button>
+    </form>
+    <p class="muted" data-t="settingsNote"></p>
+    <p class="muted" data-t="alertsNote"></p>
+  </section>
+  <section id="services"></section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

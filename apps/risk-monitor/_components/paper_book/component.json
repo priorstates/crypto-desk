@@ -1,0 +1,10 @@
+{
+  "name": "paper_book",
+  "version": "0.1.0",
+  "about": "Paper trading book: position, average price, realised and unrealised PnL from simulated fills, and the trade-through fill rule (a resting quote fills only when a trade prints strictly through its price).",
+  "offers": [
+    "Position(qty=0, avg=0, realised=0): .fill(side, price, size) -\u003e realised PnL of that fill; .unrealised(mark); .total(mark); .as_dict(); Position.from_dict(d)",
+    "through_fill(side, quote_price, quote_size, trade_price, trade_size) -\u003e size filled (0 when the trade did not print through)",
+    "replay(fills) -\u003e Position rebuilt from rows with side, price, size"
+  ]
+}

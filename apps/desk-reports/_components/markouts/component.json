@@ -1,0 +1,12 @@
+{
+  "name": "markouts",
+  "version": "0.1.0",
+  "about": "Markouts of fills: the mid a fixed time after each fill, signed so positive means the fill made money (buy: later mid above the fill price; sell: below). A live tracker fed with the clock and the mid, a lookup in a recorded mid series, and size-weighted averages by side and horizon.",
+  "offers": [
+    "HORIZONS = (1, 5, 30) seconds",
+    "signed(side, price, later_mid) -\u003e price difference in the fill's favour",
+    "Tracker(horizons=HORIZONS): .add(fill_dict with side, price, local_ns); .advance(now_ns, mid) -\u003e finished rows (the fill plus mid\u003ch\u003e and m\u003ch\u003e per horizon, None when no mid); .pending",
+    "from_series(times_ns, mids, fill, horizons=HORIZONS, max_age_ns=10e9) -\u003e the same row from a sorted recorded series, or None when the series ends before the last horizon",
+    "summary(rows, horizons=HORIZONS) -\u003e {buy|sell|all: {h: {avg, avg_bps, n, size}}}, weighted by fill size"
+  ]
+}

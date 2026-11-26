@@ -1,0 +1,19 @@
+:root { --s1: #2456c7; --s2: #c2410c; --s3: #0f766e; --s4: #9333ea; --s5: #4d7c0f; --s6: #be185d; }
+:root[data-theme="dark"] { --s1: #7aa2ff; --s2: #fb923c; --s3: #2dd4bf; --s4: #c084fc; --s5: #a3e635; --s6: #f472b6; }
+.chart .axis { font-size: 11.5px; }
+td small { display: block; color: var(--muted); font-size: 11px; }
+.chart { width: 100%; max-width: 740px; height: auto; display: block; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .zero { stroke: var(--muted); stroke-width: 1; }
+.chart .tick { fill: var(--muted); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.chart .cbar { fill: var(--accent); }
+.chart .line { fill: none; stroke-width: 2; }
+.chart .whisker { stroke-width: 1.5; opacity: .55; }
+.chart .s1 { stroke: var(--s1); } .chart .s2 { stroke: var(--s2); } .chart .s3 { stroke: var(--s3); }
+.chart .s4 { stroke: var(--s4); } .chart .s5 { stroke: var(--s5); } .chart .s6 { stroke: var(--s6); }
+.chart .dot.s1 { fill: var(--s1); } .chart .dot.s2 { fill: var(--s2); } .chart .dot.s3 { fill: var(--s3); }
+.chart .dot.s4 { fill: var(--s4); } .chart .dot.s5 { fill: var(--s5); } .chart .dot.s6 { fill: var(--s6); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--muted); margin: 4px 0 4px 52px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+.legend .s1 { background: var(--s1); } .legend .s2 { background: var(--s2); } .legend .s3 { background: var(--s3); }
+.legend .s4 { background: var(--s4); } .legend .s5 { background: var(--s5); } .legend .s6 { background: var(--s6); }

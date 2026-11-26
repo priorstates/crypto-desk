@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Notebook</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/charts.css">
+</head>
+<body>
+<div class="shell">
+  <nav>
+    <h1>🔬 <span data-t="title"></span></h1>
+    <div id="tabs" class="tabs"></div>
+    <div class="syncbox">
+      <p id="syncState" class="muted"></p>
+      <button id="syncNow" class="quiet" data-t="syncNow"></button>
+    </div>
+  </nav>
+  <main>
+    <div id="studyPage">
+      <header>
+        <h2 id="studyTitle"></h2>
+        <p class="muted" id="studySub"></p>
+      </header>
+      <form id="controls" class="card controls">
+        <label><span data-t="product"></span><select id="product"></select></label>
+        <label><span data-t="from"></span><input id="from" type="date" required></label>
+        <label><span data-t="to"></span><input id="to" type="date" required></label>
+        <label class="check"><input id="openEnd" type="checkbox"><span data-t="openEnd"></span></label>
+        <button id="run" data-t="run"></button>
+        <span class="grow"></span>
+        <label><span data-t="saveAs"></span><input id="saveName" maxlength="80"></label>
+        <button id="save" type="button" class="quiet" data-t="save"></button>
+      </form>
+      <p id="savedLine" class="muted" hidden></p>
+      <div id="progress" class="progress" hidden><div class="bar"><i id="progressBar"></i></div><span id="progressText"></span></div>
+      <div id="result"></div>
+    </div>
+    <div id="savedPage" hidden></div>
+    <div id="dataPage" hidden></div>
+  </main>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

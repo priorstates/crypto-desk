@@ -1,0 +1,83 @@
+# Crypto desk
+
+A paper trading desk for Coinbase, built in [PriorStates Studio](https://priorstates.com/hub.html) by asking for it.
+Open it in your own Studio, point it at your own server, and change it by asking.
+
+**Paper trading only.** No exchange account, no API key, and no code that sends an order. The desk reads Coinbase's
+public market data feed and simulates its own fills.
+
+## What is in it
+
+| App | Runs | What it does |
+|---|---|---|
+| 📼 Market Recorder | service on your server | Records BTC-USD and ETH-USD top of book and trades from Coinbase's public feed, around the clock, with gap detection, a disk cap and a live socket for the other services. |
+| 🧾 Paper Market Maker | service on your server | Quotes one bid and one ask around the mid on BTC-USD, fills them when a trade prints through the price, and logs fills, position, PnL and markouts (1 / 5 / 30 s). |
+| 🛡️ Risk Monitor | service on your server | Independent of the strategy: rebuilds position and day PnL from the fills, checks position and loss limits and feed staleness, and stops and flattens the paper strategy on a breach. |
+| 📨 Desk Reports | service on your server | Daily and weekly reports (PnL, fills, markouts by side, risk events, feed gaps, disk), plus an alert when a limit is hit or a feed goes stale and again when it clears. By email (SMTP) and Slack (webhook). |
+| 🔬 Research Notebook | in Studio | Copies the recorded files and the paper fills from the server over ssh (read only) and studies spreads, volatility, and how prices move after trades. |
+
+Each service app also has a page in Studio for status, settings and charts. Every service uses only the Python
+standard library.
+
+## Open it in Studio
+
+1. Download and install [PriorStates Studio](https://priorstates.com/hub.html) for your computer.
+2. In Studio: **Add a space** → **Keep it: From a git repository** → Repository address:
+   `https://github.com/priorstates/crypto-desk` → **Clone and open**.
+3. The space opens with its drawing: the five apps, how data flows between them, and the decisions made so far.
+
+Until the services run on a server, the service apps' pages show sample data.
+
+## Run it on your server
+
+The services expect a Linux server you can reach over ssh with `python3` installed. They call it
+`trade1`. Either add that name to your `~/.ssh/config`:
+
+```
+Host trade1
+    HostName <your server>
+    User <your user>
+```
+
+or ask the space's Build: *"Use my server `myhost` instead of trade1."*
+
+Then, in each service app (Market Recorder first), press **Deploy**. Studio copies the app's `remote/` folder to the
+server, starts it as a service, and shows it under **Services**. Mark the server as production in Studio, and every
+deploy and stop asks you first.
+
+**Reports and alerts:** open Desk Reports → Settings, fill in your SMTP server and address (or a Slack webhook), and
+press **Send a test report now**. The password and the webhook are written to a private file on the server (mode 600),
+never into the app's code or this repository.
+
+## Change it by asking
+
+Studio's AI works on these apps with you. Some things to try:
+
+- *"Record SOL-USD too."*
+- *"Only fill a paper quote on a trade that prints at least 250 ms after the quote was placed."*
+- *"Add a max order-rate limit to Risk Monitor."*
+- *"Send the daily report at 17:00 New York time instead of 21:00 UTC."*
+- In **Discuss**: *"Why do the sells lose more than the buys?"*, with the fills and markouts in front of it.
+
+You can also click 💬 on any part of an app's page, write what should change there, and press **Do it**, or ✋ to edit
+text by hand.
+
+## How the repository is laid out
+
+```
+studio-space.json   the space: name, icon, groups and the drawing
+NOTES.md            the space's notes (its goal)
+apps/<id>/          one folder per app: plugin.json, index.html, js/, css/, and remote/ for the service code
+                    _components/ are pinned copies of shared parts (paper_book, markouts)
+```
+
+Each person's own data (`apps/*/data/`) stays out of git. Your chats and discussions stay in Studio on your computer.
+To share your changes with your team, keep the space in your own repository and commit from Studio's ⎇ button.
+
+## License and disclaimer
+
+The desk's code is licensed under the [Apache License 2.0](LICENSE). PriorStates Studio itself is a separate product
+with its own terms.
+
+This is example software for learning and research. It is provided as is, with no warranty. It is not investment
+advice, and it does not trade.

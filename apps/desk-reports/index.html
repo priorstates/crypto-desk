@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desk Reports</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header>
+  <h1>📨 <span data-t="title"></span></h1>
+  <p class="sub" data-t="sub"></p>
+</header>
+<main>
+  <div id="banner" class="banner" hidden></div>
+  <section class="tiles">
+    <article class="card" id="svcCard"><small data-t="service"></small><b id="svc">–</b><p class="muted" id="svcNote"></p></article>
+    <article class="card" id="dailyCard"><small data-t="lastDaily"></small><b id="daily">–</b><div id="dailyCh" class="chips"></div><p class="muted" id="dailyNext"></p></article>
+    <article class="card" id="weeklyCard"><small data-t="lastWeekly"></small><b id="weekly">–</b><div id="weeklyCh" class="chips"></div><p class="muted" id="weeklyNext"></p></article>
+  </section>
+  <section class="card bad" id="errCard" hidden>
+    <h2 data-t="lastError"></h2>
+    <p id="errText"></p>
+    <p class="muted" id="errNote"></p>
+  </section>
+  <section class="card row" id="testCard">
+    <div>
+      <h2 data-t="testTitle"></h2>
+      <p class="muted" data-t="testNote"></p>
+      <div id="testResult" class="chips"></div>
+    </div>
+    <button id="test" data-t="testBtn"></button>
+  </section>
+  <section class="card" id="alertsCard">
+    <h2 data-t="lastAlerts"></h2>
+    <p class="muted" id="alertsEmpty" data-t="noAlerts"></p>
+    <div class="scroll"><table id="alerts" hidden>
+      <thead><tr><th data-t="aWhen"></th><th data-t="aWhat"></th><th data-t="aLasted"></th><th data-t="aRaise"></th><th data-t="aClear"></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+  <section class="card" id="settingsCard">
+    <h2 data-t="settings"></h2>
+    <form id="settings">
+      <fieldset><legend data-t="gTimes"></legend>
+        <label><span data-t="sDaily"></span><input name="daily_time" pattern="([01]\d|2[0-3]):[0-5]\d" placeholder="21:00" required></label>
+        <label><span data-t="sWeekDay"></span><select name="weekly_day">
+          <option value="mon" data-t="mon"></option><option value="tue" data-t="tue"></option><option value="wed" data-t="wed"></option>
+          <option value="thu" data-t="thu"></option><option value="fri" data-t="fri"></option><option value="sat" data-t="sat"></option>
+          <option value="sun" data-t="sun"></option></select></label>
+        <label><span data-t="sWeekly"></span><input name="weekly_time" pattern="([01]\d|2[0-3]):[0-5]\d" placeholder="21:05" required></label>
+        <label><span data-t="sMinN"></span><input name="min_n" type="number" min="1" step="1" required></label>
+      </fieldset>
+      <fieldset><legend data-t="gEmail"></legend>
+        <label><span data-t="sHost"></span><input name="email_host"></label>
+        <label><span data-t="sPort"></span><input name="email_port" type="number" min="1" max="65535" step="1"></label>
+        <label><span data-t="sTls"></span><select name="email_tls">
+          <option value="none" data-t="tlsNone"></option><option value="starttls">STARTTLS</option><option value="ssl">SSL / TLS</option></select></label>
+        <label><span data-t="sFrom"></span><input name="email_from"></label>
+        <label class="two"><span data-t="sTo"></span><input name="email_to"></label>
+        <label><span data-t="sUser"></span><input name="email_user" autocomplete="off"></label>
+        <label class="tick"><input name="email_reports" type="checkbox"><span data-t="forReports"></span></label>
+        <label class="tick"><input name="email_alerts" type="checkbox"><span data-t="forAlerts"></span></label>
+      </fieldset>
+      <fieldset><legend>Slack</legend>
+        <label class="tick"><input name="slack_reports" type="checkbox"><span data-t="forReports"></span></label>
+        <label class="tick"><input name="slack_alerts" type="checkbox"><span data-t="forAlerts"></span></label>
+      </fieldset>
+      <fieldset><legend data-t="gAlerts"></legend>
+        <label><span data-t="sGap"></span><input name="alert_min_gap_s" type="number" min="0" step="1" required></label>
+        <label class="two"><span data-t="sChecks"></span><input name="alert_checks"></label>
+        <label><span data-t="sRetry"></span><input name="retry_hours" type="number" min="0" step="any" required></label>
+      </fieldset>
+      <div><button data-t="save"></button></div>
+    </form>
+    <p class="muted" data-t="settingsNote"></p>
+  </section>
+  <section class="card" id="secretsCard">
+    <h2 data-t="secrets"></h2>
+    <p class="muted" data-t="secretsNote"></p>
+    <div class="secret" data-secret="slack_webhook">
+      <div><b data-t="webhook"></b> <span class="chip" id="st_slack_webhook">–</span></div>
+      <input type="password" autocomplete="off" placeholder="https://hooks.slack.com/services/…" aria-label="Slack webhook">
+      <button class="small" data-act="set" data-t="saveSecret"></button>
+      <button class="small ghost" data-act="clear" data-t="remove"></button>
+    </div>
+    <div class="secret" data-secret="smtp_password">
+      <div><b data-t="smtpPass"></b> <span class="chip" id="st_smtp_password">–</span></div>
+      <input type="password" autocomplete="new-password" aria-label="SMTP password">
+      <button class="small" data-act="set" data-t="saveSecret"></button>
+      <button class="small ghost" data-act="clear" data-t="remove"></button>
+    </div>
+  </section>
+  <section id="services"></section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

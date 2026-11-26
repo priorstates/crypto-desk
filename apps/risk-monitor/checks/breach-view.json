@@ -1,0 +1,29 @@
+{
+  "steps": [
+    {
+      "do": "expect",
+      "text": "2 breached"
+    },
+    {
+      "do": "expect",
+      "text": "Stop signal is on"
+    },
+    {
+      "do": "expect",
+      "text": "Day loss 300.12 USD beyond 300"
+    },
+    {
+      "do": "click",
+      "on": "Acknowledge"
+    },
+    {
+      "do": "wait",
+      "value": "1"
+    },
+    {
+      "do": "expect",
+      "text": "Disk space on trade1"
+    }
+  ],
+  "page": "?sample"
+}

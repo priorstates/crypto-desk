@@ -1,0 +1,52 @@
+{
+  "steps": [
+    {
+      "do": "expect",
+      "text": "Time at each spread (USD)"
+    },
+    {
+      "do": "click",
+      "on": "Volatility"
+    },
+    {
+      "do": "wait",
+      "value": "3"
+    },
+    {
+      "do": "expect",
+      "text": "Realised volatility by horizon"
+    },
+    {
+      "do": "click",
+      "on": "After trades"
+    },
+    {
+      "do": "wait",
+      "value": "3"
+    },
+    {
+      "do": "expect",
+      "text": "Receive delay"
+    },
+    {
+      "do": "click",
+      "on": "Paper strategy"
+    },
+    {
+      "do": "wait",
+      "value": "3"
+    },
+    {
+      "do": "expect",
+      "text": "PnL split, by day"
+    },
+    {
+      "do": "click",
+      "on": "Data"
+    },
+    {
+      "do": "expect",
+      "text": "Recorded days on this computer"
+    }
+  ]
+}
