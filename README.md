@@ -43,9 +43,16 @@ Host trade1
 
 or ask the space's Build: *"Use my server `myhost` instead of trade1."*
 
-Then, in each service app (Market Recorder first), press **Deploy**. Studio copies the app's `remote/` folder to the
-server, starts it as a service, and shows it under **Services**. Mark the server as production in Studio, and every
-deploy and stop asks you first.
+Then deploy the four services, Market Recorder first, then Paper Market Maker, Risk Monitor and Desk Reports. Open
+each app, press **Build**, and say:
+
+> *"Deploy this as a service on trade1."* (or your own server's name)
+
+Studio asks you to allow it, copies the app's `remote/` folder to the server, starts the service and lists it under
+**Services**. A fresh clone shows nothing there yet: which server each app runs on is kept in your own Studio, not in
+this repository. After the first deploy, Services has **Deploy**, **Start**, **Stop**, **Check** and **Log** for it,
+and the app's page fills in within a few seconds. Mark the server as production in Studio, and every deploy and stop
+asks you first.
 
 **Reports and alerts:** open Desk Reports → Settings, fill in your SMTP server and address (or a Slack webhook), and
 press **Send a test report now**. The password and the webhook are written to a private file on the server (mode 600),
