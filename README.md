@@ -35,6 +35,11 @@ Each service app also has a page in Studio for status, settings and charts. Ever
 standard library. The seven apps after the Research Notebook only read the services' data through Studio, so there is
 nothing to deploy for them.
 
+The shared components `paper_book` (the paper fills, position and PnL) and `markouts` are in the `components/` library,
+with their tests; each app keeps a pinned copy of the ones it uses. Studio adds the library by itself when it opens the
+space (from the release after 0.5.84); with 0.5.84, add it once on the **Components** page → **Add a folder…** → the
+space's `components` folder.
+
 ![The desk in Studio: twelve apps in five groups on one drawing, every app open as a tab](img/desk-drawing.jpg)
 
 ## Open it in Studio

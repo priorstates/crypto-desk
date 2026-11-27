@@ -104,11 +104,11 @@
    }
   ],
   "pos": {
-   "c:components/markouts": {
+   "c:crypto-desk/markouts": {
     "x": 20,
     "y": 350
    },
-   "c:components/paper_book": {
+   "c:crypto-desk/paper_book": {
     "x": 20,
     "y": 250
    },

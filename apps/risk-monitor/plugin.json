@@ -12,7 +12,7 @@
   "skill": "A service (remote/, deployed to trade1 at ~/risk-monitor, service name \"monitor\") plus a viewer/controller page. The service is independent of the strategy: it reads Market Recorder's heartbeat.json and live socket, Paper Market Maker's heartbeat.json and its fills log (position and day PnL are rebuilt from the fills with the component paper_book, never taken from the strategy), and the disk. Checks: feed_btc, feed_eth, recorder_hb, maker_hb, position, loss, disk. A position or loss breach or a stale BTC-USD feed writes the stop signal ~/paper-market-maker/control/risk.json (format in paper-market-maker's remote/README.md; keep it). Its own data is on trade1 in ~/risk-monitor-data (state.json, events/\u003cday\u003e.jsonl). Streams the page reads: \"state\" (every 2 s: checks, position, PnL, stop, settings) and \"events\" (one row per change of an event, merged by id). Settings (defaults in remote/conf.py DEFAULTS and js/app.js DEFAULTS, keep both the same): stale_s, hb_stale_s, max_position, max_day_loss, min_free_gb, remind_min, and ack (comma list of event ids the page acknowledged) / clear_at (unix seconds of the page's Clear stop button). The page keeps one kv key: \"notified\" = {eventId: {first, last, rec}} (ms of the first and latest system notification, rec = recovery told), so each event is notified once, reminded every remind_min while open and not acknowledged, and its recovery told once. Notifications use forge.notify on this computer only (no phone alert); the card line uses kit.glance. remote/README.md lists files, streams and fields.",
   "uses": [
     {
-      "lib": "components",
+      "lib": "crypto-desk",
       "component": "paper_book",
       "version": "0.1.0"
     }

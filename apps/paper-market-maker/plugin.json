@@ -11,12 +11,12 @@
   "skill": "PAPER ONLY: no exchange credentials and no code that sends an order. A service (remote/, deployed to trade1 at ~/paper-market-maker, service name \"maker\") plus a viewer page. The service reads Market Recorder's live socket (~/market-recorder/live.sock) and simulates one bid and one ask on BTC-USD; position and PnL accounting and the trade-through fill rule come from the component paper_book (_components/, never edited here). The page saves nothing of its own: it reads the streams \"status\" (the heartbeat, every 2 s), \"pnl\" (every 30 s) , \"fills\" (one row per simulated fill) and \"markouts\" (one row per fill, 30 s after it: the fill's id, side, price, size, reason, local_ns, day, plus mid1/mid5/mid30 and m1/m5/m30 = USD per BTC in the fill's favour 1, 5 and 30 s later, null when the feed was stale; from the component markouts, never edited here), and sends settings with forge.services.setSettings. Settings (defaults in remote/conf.py DEFAULTS and js/app.js DEFAULTS, keep both the same): half_spread_bps, quote_size, skew_bps, requote_bps, max_position, daily_loss_limit, stale_s, data_dir, keep_days, and stop_at / resume_at (unix seconds, set by the page's Stop and Resume buttons; the later one wins). remote/README.md lists the daily log files and their fields, heartbeat.json, the streams, and the stop signal file control/risk.json that Risk Monitor writes; Risk Monitor and Research Notebook depend on those, so keep them stable.",
   "uses": [
     {
-      "lib": "components",
+      "lib": "crypto-desk",
       "component": "paper_book",
       "version": "0.1.0"
     },
     {
-      "lib": "components",
+      "lib": "crypto-desk",
       "component": "markouts",
       "version": "0.1.0"
     }
