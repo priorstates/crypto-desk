@@ -3,6 +3,9 @@
 A paper trading desk for Coinbase, built in [PriorStates Studio](https://priorstates.com/hub.html) by asking for it.
 Open it in your own Studio, point it at your own server, and change it by asking.
 
+Your AI builds it; Studio runs it. It was built with Claude Code, and any AI Studio works with does the same: Codex,
+Gemini CLI, Qwen Code, Antigravity, your own key with any service, or an open model on your own machine.
+
 **Slides:** [how this desk was built, run and shared in Studio](slides/crypto_desk_deck.pdf) (24 pages, PDF).
 
 [![A day on the desk: a 2-minute video](video/crypto-desk-day-poster.jpg)](https://priorstates.com/assets/qt/crypto-desk-day-v1.mp4)
