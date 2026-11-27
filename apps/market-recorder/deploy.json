@@ -1,0 +1,57 @@
+{
+  "studio_deploy": 1,
+  "deployments": [
+    {
+      "machine": "trade1",
+      "dir": "~/market-recorder",
+      "from": "remote",
+      "note": "One connection to Coinbase's public market data feed. Records quotes and trades, writes heartbeat.json and serves live.sock to other apps on trade1. Never sends orders.",
+      "services": [
+        {
+          "name": "recorder",
+          "run": "python3 recorder.py"
+        }
+      ],
+      "settings": [
+        {
+          "key": "products",
+          "label": "Products",
+          "type": "text",
+          "default": "BTC-USD,ETH-USD",
+          "help": "Coinbase product ids, separated by commas"
+        },
+        {
+          "key": "data_dir",
+          "label": "Data folder",
+          "type": "text",
+          "default": "~/market-data",
+          "help": "Where the daily files go on trade1"
+        },
+        {
+          "key": "cap_gb",
+          "label": "Size cap (GB)",
+          "type": "number",
+          "default": 5,
+          "help": "The oldest days are removed when the recordings are larger than this",
+          "min": 0
+        },
+        {
+          "key": "keep_days",
+          "label": "Keep days",
+          "type": "number",
+          "default": 30,
+          "help": "Days older than this are removed (0: no age rule)",
+          "min": 0
+        },
+        {
+          "key": "min_free_gb",
+          "label": "Keep free on disk (GB)",
+          "type": "number",
+          "default": 1,
+          "help": "The oldest days are also removed when the disk has less free space than this",
+          "min": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "studio_deploy": 1,
+  "deployments": [
+    {
+      "machine": "trade1",
+      "dir": "~/paper-market-maker",
+      "from": "remote",
+      "note": "Paper only: reads Market Recorder's live socket on the same machine and writes simulated quotes, fills, position and PnL. No exchange credentials, no orders.",
+      "services": [
+        {
+          "name": "maker",
+          "run": "python3 maker.py"
+        }
+      ],
+      "settings": [
+        {
+          "key": "half_spread_bps",
+          "label": "Half-spread (bps of the mid)",
+          "type": "number",
+          "default": 2,
+          "help": "Each simulated quote sits this far from the mid.",
+          "min": 0
+        },
+        {
+          "key": "quote_size",
+          "label": "Quote size (BTC)",
+          "type": "number",
+          "default": 0.01,
+          "min": 0
+        },
+        {
+          "key": "skew_bps",
+          "label": "Inventory skew (bps at full position)",
+          "type": "number",
+          "default": 2,
+          "help": "Both quotes move this far against the position when it is at the limit, and in proportion below it.",
+          "min": 0
+        },
+        {
+          "key": "requote_bps",
+          "label": "Requote threshold (bps)",
+          "type": "number",
+          "default": 1,
+          "help": "A quote is replaced when its target has moved more than this.",
+          "min": 0
+        },
+        {
+          "key": "max_position",
+          "label": "Max position (BTC, either way)",
+          "type": "number",
+          "default": 0.25,
+          "min": 0
+        },
+        {
+          "key": "daily_loss_limit",
+          "label": "Daily loss limit (USD, UTC day)",
+          "type": "number",
+          "default": 300,
+          "help": "At this loss it flattens and stops. 0 turns it off.",
+          "min": 0
+        },
+        {
+          "key": "stale_s",
+          "label": "Pull quotes when the feed is silent for (s)",
+          "type": "number",
+          "default": 10,
+          "min": 0
+        },
+        {
+          "key": "data_dir",
+          "label": "Log folder on the server",
+          "type": "text",
+          "default": "~/paper-mm-data"
+        },
+        {
+          "key": "keep_days",
+          "label": "Keep logs for (days)",
+          "type": "number",
+          "default": 30,
+          "min": 0
+        },
+        {
+          "key": "stop_at",
+          "label": "Last Stop (set by the page's Stop button)",
+          "type": "number",
+          "default": 0,
+          "help": "Unix seconds. Use the app's Stop and Resume buttons instead of typing here."
+        },
+        {
+          "key": "resume_at",
+          "label": "Last Resume (set by the page's Resume button)",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    }
+  ]
+}

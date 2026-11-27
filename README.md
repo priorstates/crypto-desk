@@ -44,15 +44,14 @@ Host trade1
 or ask the space's Build: *"Use my server `myhost` instead of trade1."*
 
 Then deploy the four services, Market Recorder first, then Paper Market Maker, Risk Monitor and Desk Reports. Open
-each app, press **Build**, and say:
+**Services**: each one is listed with **Deploy to…** (Studio 0.5.83 or later), because every app carries how to deploy
+it in its `deploy.json`. Press it, name your server (it suggests `trade1`), check what it will copy and run there, and
+press **Deploy**. Studio copies the app's `remote/` folder to the server, starts the service, and from then on Services
+has **Deploy**, **Start**, **Stop**, **Check** and **Log** for it; the app's page fills in within a few seconds. Mark the
+server as production in Studio, and every deploy and stop asks you first.
 
-> *"Deploy this as a service on trade1."* (or your own server's name)
-
-Studio asks you to allow it, copies the app's `remote/` folder to the server, starts the service and lists it under
-**Services**. A fresh clone shows nothing there yet: which server each app runs on is kept in your own Studio, not in
-this repository. After the first deploy, Services has **Deploy**, **Start**, **Stop**, **Check** and **Log** for it,
-and the app's page fills in within a few seconds. Mark the server as production in Studio, and every deploy and stop
-asks you first.
+With an older Studio, open each app, press **Build**, and say: *"Deploy this as a service on trade1."* (or your own
+server's name).
 
 **Reports and alerts:** open Desk Reports → Settings, fill in your SMTP server and address (or a Slack webhook), and
 press **Send a test report now**. The password and the webhook are written to a private file on the server (mode 600),
@@ -76,7 +75,8 @@ text by hand.
 ```
 studio-space.json   the space: name, icon, groups and the drawing
 NOTES.md            the space's notes (its goal)
-apps/<id>/          one folder per app: plugin.json, index.html, js/, css/, and remote/ for the service code
+apps/<id>/          one folder per app: plugin.json, index.html, js/, css/, and remote/ for the service code;
+                    deploy.json says how a service app is deployed (folder, service, settings form)
                     _components/ are pinned copies of shared parts (paper_book, markouts)
 ```
 

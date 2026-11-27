@@ -1,7 +1,11 @@
 {
   "canvas": {
-    "frames": [],
+    "frames": [
+      {"color":"#5b8def","gid":"g0","h":362,"name":"Runs on your server","w":480,"x":0,"y":0},
+      {"color":"#2bb673","gid":"g0d7f1df0","h":170,"name":"Research","w":220,"x":570,"y":96}
+    ],
     "holders": [],
+    "lay": 2,
     "links": [
       {"from":"market-recorder","id":"d545cf72","label":"live quotes and trades","to":"paper-market-maker"},
       {"from":"market-recorder","id":"61e5519f","label":"heartbeat, feed age","to":"risk-monitor"},
@@ -14,14 +18,24 @@
       {"from":"market-recorder","id":"0507373e","label":"gaps, message rates","to":"desk-reports"}
     ],
     "notes": [
-      {"gid":"g0d7f1df0","id":"f06043ee","text":"Decided 26 Nov: paper only, no real orders. Top of book + trades, no depth. Fill only when a trade prints through our price. Max position 0.25 BTC either way, daily loss 300 USD: flatten and stop quoting. Alerts on this computer.","w":220,"x":null,"y":null}
+      {"gid":"g0d7f1df0","id":"f06043ee","text":"Decided 26 Nov: paper only, no real orders. Top of book + trades, no depth. Fill only when a trade prints through our price. Max position 0.25 BTC either way, daily loss 300 USD: flatten and stop quoting. Alerts on this computer.","w":220,"x":570,"y":282}
     ],
-    "pos": {}
+    "pos": {
+      "c:components/markouts": {"x":339,"y":402},
+      "c:components/paper_book": {"x":111,"y":402},
+      "desk-reports": {"x":330,"y":64},
+      "market-recorder": {"x":30,"y":64},
+      "paper-market-maker": {"x":330,"y":236},
+      "research-notebook": {"x":590,"y":150},
+      "risk-monitor": {"x":30,"y":236}
+    }
   },
   "groups": [
     {"id":"g0","ids":["market-recorder","paper-market-maker","risk-monitor","desk-reports"],"name":"Runs on your server"},
     {"id":"g0d7f1df0","ids":["research-notebook"],"name":"Research"}
   ],
+  "hidden": [],
   "icon": "📈",
-  "name": "Crypto desk"
+  "name": "Crypto desk",
+  "removed": []
 }

@@ -1,0 +1,76 @@
+{
+  "studio_deploy": 1,
+  "deployments": [
+    {
+      "machine": "trade1",
+      "dir": "~/risk-monitor",
+      "from": "remote",
+      "note": "Risk Monitor: checks the feed, the paper strategy's position and day loss, heartbeats and disk; writes the stop signal ~/paper-market-maker/control/risk.json. Alerts go to this computer only (the page), not the phone.",
+      "services": [
+        {
+          "name": "monitor",
+          "run": "python3 monitor.py"
+        }
+      ],
+      "settings": [
+        {
+          "key": "stale_s",
+          "label": "Feed stale after (seconds without a message)",
+          "type": "number",
+          "default": 10,
+          "min": 0
+        },
+        {
+          "key": "hb_stale_s",
+          "label": "Recorder or strategy heartbeat missing after (seconds)",
+          "type": "number",
+          "default": 5,
+          "min": 0
+        },
+        {
+          "key": "max_position",
+          "label": "Position limit (BTC, either way)",
+          "type": "number",
+          "default": 0.25,
+          "min": 0
+        },
+        {
+          "key": "max_day_loss",
+          "label": "Day loss limit (USD, UTC day)",
+          "type": "number",
+          "default": 300,
+          "min": 0
+        },
+        {
+          "key": "min_free_gb",
+          "label": "Disk space floor on trade1 (GB free)",
+          "type": "number",
+          "default": 20,
+          "min": 0
+        },
+        {
+          "key": "remind_min",
+          "label": "Remind every (minutes) while a breach lasts",
+          "type": "number",
+          "default": 5,
+          "help": "0: no reminders",
+          "min": 0
+        },
+        {
+          "key": "ack",
+          "label": "Acknowledged events",
+          "type": "text",
+          "default": "",
+          "help": "Set by the page's Acknowledge button"
+        },
+        {
+          "key": "clear_at",
+          "label": "Clear stop pressed at (unix seconds)",
+          "type": "number",
+          "default": 0,
+          "help": "Set by the page's Clear stop button"
+        }
+      ]
+    }
+  ]
+}

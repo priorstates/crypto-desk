@@ -1,0 +1,151 @@
+{
+  "studio_deploy": 1,
+  "deployments": [
+    {
+      "machine": "trade1",
+      "dir": "~/desk-reports",
+      "from": "remote",
+      "log": "logs/reporter.log",
+      "note": "Paper only: reads the other three services' files and sends reports and alerts by email and Slack. State and send log in ~/desk-reports-data; the Slack webhook and SMTP password in ~/.desk-reports-secrets (mode 600).",
+      "services": [
+        {
+          "name": "reporter",
+          "run": "python3 reporter.py"
+        }
+      ],
+      "settings": [
+        {
+          "key": "daily_time",
+          "label": "Daily report at (UTC, HH:MM)",
+          "type": "text",
+          "default": "21:00"
+        },
+        {
+          "key": "weekly_day",
+          "label": "Weekly report on",
+          "type": "choice",
+          "default": "sun",
+          "choices": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ]
+        },
+        {
+          "key": "weekly_time",
+          "label": "Weekly report at (UTC, HH:MM)",
+          "type": "text",
+          "default": "21:05",
+          "help": "After the daily."
+        },
+        {
+          "key": "min_n",
+          "label": "Fewest fills for a markout",
+          "type": "number",
+          "default": 30,
+          "help": "Under it the report says 'too few'.",
+          "min": 1
+        },
+        {
+          "key": "email_host",
+          "label": "SMTP host",
+          "type": "text",
+          "default": "localhost"
+        },
+        {
+          "key": "email_port",
+          "label": "SMTP port",
+          "type": "number",
+          "default": 1025,
+          "min": 1,
+          "max": 65535
+        },
+        {
+          "key": "email_tls",
+          "label": "SMTP TLS",
+          "type": "choice",
+          "default": "none",
+          "choices": [
+            "none",
+            "starttls",
+            "ssl"
+          ]
+        },
+        {
+          "key": "email_user",
+          "label": "SMTP login (empty: none)",
+          "type": "text",
+          "default": "",
+          "help": "The password is set on the app's page, not here."
+        },
+        {
+          "key": "email_from",
+          "label": "Email from",
+          "type": "text",
+          "default": "desk-reports@example.com"
+        },
+        {
+          "key": "email_to",
+          "label": "Email to (commas)",
+          "type": "text",
+          "default": "desk@example.com"
+        },
+        {
+          "key": "email_reports",
+          "label": "Email: reports",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "email_alerts",
+          "label": "Email: alerts",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "slack_reports",
+          "label": "Slack: reports",
+          "type": "bool",
+          "default": true,
+          "help": "Slack is off while no webhook is set on the app's page."
+        },
+        {
+          "key": "slack_alerts",
+          "label": "Slack: alerts",
+          "type": "bool",
+          "default": true
+        },
+        {
+          "key": "alert_checks",
+          "label": "Risk Monitor checks to alert on",
+          "type": "text",
+          "default": "position,loss,stop,feed_btc,feed_eth"
+        },
+        {
+          "key": "alert_min_gap_s",
+          "label": "Minimum gap between alerts of one check (s)",
+          "type": "number",
+          "default": 300,
+          "min": 0
+        },
+        {
+          "key": "retry_hours",
+          "label": "Retry a failed send for (hours)",
+          "type": "number",
+          "default": 24,
+          "min": 0
+        },
+        {
+          "key": "test_at",
+          "label": "Test report asked at (set by the page's button)",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    }
+  ]
+}
