@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fill Trace</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>🔎 <span data-t="title"></span> <span class="paper" data-t="paper"></span></h1>
+    <p class="sub" data-t="sub"></p>
+  </div>
+  <p class="sub" id="live"></p>
+</header>
+<div class="banner" id="banner" hidden></div>
+<main>
+  <aside class="card list">
+    <h2><span data-t="fills"></span> <small id="count"></small></h2>
+    <div id="fills" tabindex="0"></div>
+    <p class="empty" id="fillsEmpty" hidden></p>
+  </aside>
+  <section class="detail" id="detail" hidden>
+    <div class="card head" id="head"></div>
+    <div class="card">
+      <div class="marks" id="marks"></div>
+      <div class="chart" id="chart"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="two">
+      <div class="card" id="quoteCard">
+        <h2 data-t="quoting"></h2>
+        <div id="quote"></div>
+      </div>
+      <div class="card">
+        <h2 id="timelineTitle"></h2>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </div>
+  </section>
+  <section class="card pick" id="pick" hidden></section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

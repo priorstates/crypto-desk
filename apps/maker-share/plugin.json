@@ -1,0 +1,15 @@
+{
+  "name": "Maker Share",
+  "icon": "📶",
+  "description": "How much of BTC-USD's trading our paper quotes would have caught, hour by hour today. Paper only.",
+  "entry": "index.html",
+  "version": 1,
+  "kit": 1,
+  "permissions": [],
+  "role": "viewer",
+  "runs": [
+    "computer"
+  ],
+  "wide": true,
+  "skill": "A viewer page with no service and no backend. Paper only: it only reads streams, and nothing here sends an order or starts / stops a service. Per hour of today (DEFAULTS.hours: 'utc' or 'local'), it adds up Paper Market Maker's simulated fills from its stream 'fills' (rows: t, id, side buy|sell, size, reason through|flatten, product, local_ns) and compares them with the market's traded size. Market Recorder's streams today are 'heartbeat' and 'gaps', neither of which carries traded size, so the page says so and shows fills per hour (count as bars; count, size, bought, sold in the table). If Market Recorder later publishes a stream named in DEFAULTS.volumeStreams (rows with t, an optional product, and size or volume in BTC: one row per trade or per interval), the page switches by itself to share = our filled size / traded size, per hour, as bars and columns. Studio hands a page only the newest DEFAULTS.pageRows (5000) rows of a stream, with no way to read older ones: when today's fills are more than that, hourState() marks the hours before the oldest row read as 'unknown' (hatched, a dash) and the first one as 'partial', a notice says so, and the day's totals come from the maker's own count in its stream 'status' (fills_today, volume_today). A dash in the table is an hour not reached or not readable; 0 is an hour with no fills. Flatten fills (a stop closing the position) are not counted unless DEFAULTS.countFlatten is true; their count is shown in a note. All settings are in DEFAULTS in js/data.js (app ids, stream names, product, hours, countFlatten, refreshMs); the bucketing is in plain functions there. ?try=sample, ?try=volume and ?try=empty show made-up data for checking the page. Nothing is saved (no kv keys). Card line: kit.glance with today's fills, or the share when volume exists."
+}

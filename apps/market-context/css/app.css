@@ -1,0 +1,70 @@
+/* Class names carry an mh- prefix so Studio Kit's own styles never reach them. */
+:root {
+  --bg: #f5f6f8; --card: #fff; --ink: #172033; --muted: #5d6b82; --line: #dfe4ec;
+  --ok: #17803d; --warn: #b45309; --bad: #c62828; --p0: #2456c7; --p1: #0e8f8a; --hatch: #e9edf3; --sel: #eef2f9;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --card: #1a2029; --ink: #e8ecf3; --muted: #9aa7bb; --line: #2c3542;
+  --ok: #4ade80; --warn: #fbbf24; --bad: #f87171; --p0: #7aa2ff; --p1: #45d0c8; --hatch: #242c38; --sel: #222a36;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; max-width: none; background: var(--bg); color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.mh-page { max-width: 1240px; margin: 0 auto; padding: 16px 24px 14px; }
+.mh-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mh-top h1 { font-size: 20px; margin: 0; font-weight: 650; color: var(--ink); }
+.mh-pill { font-size: 12px; font-weight: 600; color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 1px 9px; }
+.mh-live { margin-left: auto; font-size: 12px; color: var(--ok); font-variant-numeric: tabular-nums; }
+.mh-live.warn { color: var(--warn); }
+.mh-sub { color: var(--muted); margin: 2px 0 0; font-size: 13px; }
+.mh-banner { margin: 10px 0 0; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line);
+  color: var(--muted); background: var(--card); font-size: 13px; }
+.mh-banner.warn { border-color: var(--warn); color: var(--warn); }
+.mh-panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px 8px; margin-top: 10px; }
+
+.mh-readout { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; min-height: 26px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 13px; font-variant-numeric: tabular-nums; }
+.mh-readout b.mh-hour { font-size: 15px; color: var(--ink); }
+.mh-readout span { color: var(--muted); }
+.mh-readout span b { color: var(--ink); font-weight: 600; }
+.mh-tag { font-size: 11px; font-weight: 600; font-style: normal; border-radius: 99px; padding: 0 7px; border: 1px solid currentColor; }
+.mh-tag.hi { color: var(--warn); } .mh-tag.lo { color: var(--muted); }
+.mh-dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; }
+.mh-dot.p0, .mh-b.p0 { background: var(--p0); } .mh-dot.p1, .mh-b.p1 { background: var(--p1); }
+.mh-page b.pos { color: var(--ok); } .mh-page b.neg { color: var(--bad); }
+
+.mh-row { display: grid; grid-template-columns: 200px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.mh-row.mh-axis { border: 0; padding: 4px 0 0; }
+.mh-lab h2 { font-size: 14px; font-weight: 650; margin: 0; color: var(--ink); text-transform: none; letter-spacing: 0; }
+.mh-lab small { color: var(--muted); font-size: 12px; }
+.mh-stats { margin-top: 6px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.mh-stats div { white-space: nowrap; }
+.mh-stats b { color: var(--ink); font-weight: 600; }
+
+.mh-plot { display: grid; grid-template-columns: repeat(24, 1fr); height: 104px; }
+.mh-plot.signed { background: linear-gradient(var(--line), var(--line)) 0 50% / 100% 1px no-repeat; }
+.mh-col { position: relative; display: flex; align-items: flex-end; justify-content: center; gap: 2px; padding: 0 3px; min-width: 0; cursor: default; }
+.mh-col.sel { background: var(--sel); }
+.mh-col.now::after { content: ""; position: absolute; left: 3px; right: 3px; bottom: -4px; height: 2px; background: var(--ink); border-radius: 2px; }
+.mh-col.unknown::before { content: ""; position: absolute; inset: 0 3px; border-radius: 4px;
+  background: repeating-linear-gradient(135deg, var(--hatch) 0 4px, transparent 4px 8px); }
+.mh-b { flex: 1; max-width: 16px; min-height: 2px; border-radius: 3px 3px 0 0; opacity: .6; }
+.mh-b.hi { opacity: 1; } .mh-b.lo { opacity: .3; }
+.mh-b.partial { background-image: repeating-linear-gradient(135deg, transparent 0 3px, var(--card) 3px 5px); }
+.signed .mh-b { position: absolute; left: 50%; width: 16px; max-width: 60%; transform: translateX(-50%); opacity: .85; }
+.signed .mh-b.up { bottom: 50%; background: var(--ok); }
+.signed .mh-b.down { top: 50%; background: var(--bad); border-radius: 0 0 3px 3px; }
+#axis { height: auto; }
+#axis span { text-align: center; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.mh-foot { color: var(--muted); font-size: 12px; margin: 8px 2px 0; }
+
+@media (max-width: 760px) {
+  .mh-page { padding: 12px 12px 10px; }
+  .mh-row { grid-template-columns: 1fr; gap: 6px; }
+  .mh-row.mh-axis .mh-lab { display: none; }
+  .mh-stats { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-top: 2px; }
+  .mh-plot { height: 84px; }
+  .mh-col { padding: 0 1px; gap: 1px; }
+}

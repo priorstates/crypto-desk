@@ -106,6 +106,7 @@ const T = {
   buys: ['Buys', '买入', '買入', 'Compras', 'Compras'],
   sells: ['Sells', '卖出', '賣出', 'Ventas', 'Vendas'],
   allFills: ['All fills', '全部成交', '全部成交', 'Todas', 'Todas'],
+  moBars: ['Average markout by side, bps', '买入与卖出的平均值（基点）', '買入與賣出的平均值（基點）', 'Markout medio por lado, pb', 'Markout médio por lado, pb'],
   moRunning: ['Running average through the day, bps', '当日累计平均值（基点）', '當日累計平均值（基點）', 'Promedio acumulado del día, pb', 'Média acumulada do dia, pb'],
   sampleNote: ['Sample numbers, to check the layout.', '示例数字，仅用于检查布局。', '範例數字，僅用於檢查版面。', 'Números de ejemplo, para revisar el diseño.', 'Números de exemplo, para verificar o layout.'],
 };

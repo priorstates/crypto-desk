@@ -1,0 +1,13 @@
+{
+  "name": "Desk Status",
+  "icon": "🚦",
+  "description": "One page for the crypto desk: each service's health, running time and restarts, with a button to open its app. Paper only.",
+  "entry": "index.html",
+  "version": 1,
+  "kit": 1,
+  "permissions": [],
+  "role": "viewer",
+  "runs": ["computer"],
+  "wide": true,
+  "skill": "A viewer page with no service and no backend. Paper only: it only reads, and nothing here sends an order or starts / stops a service. One row per service: market-recorder/recorder (stream heartbeat), paper-market-maker/maker (streams status and events), risk-monitor/monitor (stream state), desk-reports/reporter (stream state). forge.services reaches only an app's own services, so health is judged from each app's stream (js/health.js, one plain function per service): no stream = no data, newest row older than DEFAULTS.staleS[service] = no heartbeat, then the row's own fields (error, connected, paused, gap_open; state stopped / paused; checks in breach, stop; failing). Running time: maker = time since the last 'start' row of its events stream; reporter = its state row's 'since'; recorder and monitor do not report a start time (shown as a dash). Restarts: maker only = 'start' rows in its events stream (kept 30 days) less one; the others do not report it. The app ids, stream names, stale thresholds and refresh time are in DEFAULTS in js/health.js. Nothing is saved (no kv keys). Card line: kit.glance, attention when a service needs attention."
+}

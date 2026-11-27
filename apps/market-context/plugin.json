@@ -1,0 +1,13 @@
+{
+  "name": "Market Hours",
+  "icon": "🌤️",
+  "description": "BTC-USD and ETH-USD hour by hour today: average spread, realized volatility and trade rate, beside the paper desk's PnL. Paper only.",
+  "entry": "index.html",
+  "version": 2,
+  "kit": 1,
+  "permissions": [],
+  "role": "viewer",
+  "runs": ["computer"],
+  "wide": true,
+  "skill": "A viewer page with no service and no backend. Paper only: it only reads streams; nothing here sends an order or starts / stops a service. It reads Market Recorder's stream 'heartbeat' (one row every 5 s: t, connected, products.<P>.quote {bid, ask}, last_trade_id, age_s) and Paper Market Maker's stream 'pnl' (t, day, day_pnl, every 30 s), after forge.stream.list on each. Per hour of today (DEFAULTS.hours: 'utc' = the desk's PnL day, or 'local') and per product: average spread = mean of (ask - bid) over the heartbeat's quotes, in bps of the mid (DEFAULTS.spreadUnit 'bps' or 'usd'); realized volatility = sqrt(sum of squared log returns of the mid between rows / seconds covered x 3600), in bps per hour; trade rate = growth of last_trade_id / minutes covered (exact: trade ids go up by one per trade). Two rows more than DEFAULTS.maxGapS apart, a disconnected recorder or a stale product are not counted, so an hour can be 'partial' (striped) when less than DEFAULTS.fullCover of it was covered. Hourly PnL = day_pnl at the hour's end minus at its start. The pnl stream is read the way Desk Today reads it: on its own (never waiting for the heartbeat rows), today's rows in steps of 3000 from the day's start, then subscribe with since and limit 500, rows deduplicated by t, and looked for again every 30 s until it is read; the row's label says 'reading' or 'could not be read' and only says 'no PnL published today' when the read worked and gave no rows. Each product's bars are scaled to its own highest hour; an hour at or above DEFAULTS.wildX times the day's median is drawn strong, at or below DEFAULTS.quietX pale. Studio hands a page only the newest DEFAULTS.pageRows (5000) rows of a stream (about 8 h of heartbeats), so the page keeps each hour's sums once it has seen them. kv 'hours': {date, unit, zone, p: {<product>: {<hour start, unix s>: [rows, spread sum, sum of squared returns, trades, seconds covered, seconds covered with trade ids]}}}, today only, the entry with more seconds covered wins. Hours never seen are hatched ('unknown'). All settings are in DEFAULTS in js/data.js; the rules are plain functions there. ?try=sample and ?try=empty show made-up or no data for checking the page (nothing is saved then). Card line: kit.glance with the current hour's BTC-USD volatility and trade rate."
+}

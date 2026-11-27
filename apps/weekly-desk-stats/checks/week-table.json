@@ -1,0 +1,32 @@
+{
+  "steps": [
+    {
+      "do": "wait",
+      "value": "2"
+    },
+    {
+      "do": "expect",
+      "text": "Week PnL"
+    },
+    {
+      "do": "expect",
+      "text": "today"
+    },
+    {
+      "do": "expect",
+      "text": "Stale-feed events"
+    },
+    {
+      "do": "expect",
+      "text": "Paper only"
+    },
+    {
+      "do": "expect_not",
+      "text": "undefined"
+    },
+    {
+      "do": "expect_not",
+      "text": "NaN"
+    }
+  ]
+}

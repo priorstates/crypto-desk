@@ -1,41 +1,213 @@
 {
-  "canvas": {
-    "frames": [
-      {"color":"#5b8def","gid":"g0","h":362,"name":"Runs on your server","w":480,"x":0,"y":0},
-      {"color":"#2bb673","gid":"g0d7f1df0","h":170,"name":"Research","w":220,"x":570,"y":96}
-    ],
-    "holders": [],
-    "lay": 2,
-    "links": [
-      {"from":"market-recorder","id":"d545cf72","label":"live quotes and trades","to":"paper-market-maker"},
-      {"from":"market-recorder","id":"61e5519f","label":"heartbeat, feed age","to":"risk-monitor"},
-      {"from":"paper-market-maker","id":"5745461e","label":"position, PnL","to":"risk-monitor"},
-      {"from":"risk-monitor","id":"4458585d","label":"stop and flatten","to":"paper-market-maker"},
-      {"from":"market-recorder","id":"3538b18b","label":"recorded files","to":"research-notebook"},
-      {"from":"paper-market-maker","id":"7b1eb514","label":"simulated fills","to":"research-notebook"},
-      {"from":"risk-monitor","id":"33ea1733","label":"breaches, stale feed, cleared","to":"desk-reports"},
-      {"from":"paper-market-maker","id":"4119d6ef","label":"PnL, fills, markouts","to":"desk-reports"},
-      {"from":"market-recorder","id":"0507373e","label":"gaps, message rates","to":"desk-reports"}
-    ],
-    "notes": [
-      {"gid":"g0d7f1df0","id":"f06043ee","text":"Decided 26 Nov: paper only, no real orders. Top of book + trades, no depth. Fill only when a trade prints through our price. Max position 0.25 BTC either way, daily loss 300 USD: flatten and stop quoting. Alerts on this computer.","w":220,"x":570,"y":282}
-    ],
-    "pos": {
-      "c:components/markouts": {"x":339,"y":402},
-      "c:components/paper_book": {"x":111,"y":402},
-      "desk-reports": {"x":330,"y":64},
-      "market-recorder": {"x":30,"y":64},
-      "paper-market-maker": {"x":330,"y":236},
-      "research-notebook": {"x":590,"y":150},
-      "risk-monitor": {"x":30,"y":236}
-    }
-  },
-  "groups": [
-    {"id":"g0","ids":["market-recorder","paper-market-maker","risk-monitor","desk-reports"],"name":"Runs on your server"},
-    {"id":"g0d7f1df0","ids":["research-notebook"],"name":"Research"}
+ "canvas": {
+  "frames": [
+   {
+    "color": "#5b8def",
+    "gid": "gRun",
+    "h": 159,
+    "name": "Run the desk",
+    "w": 308,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "color": "#2bb673",
+    "gid": "gStr",
+    "h": 159,
+    "name": "Strategy",
+    "w": 308,
+    "x": 380,
+    "y": 0
+   },
+   {
+    "color": "#f5a623",
+    "gid": "gFil",
+    "h": 289,
+    "name": "Fills & checks",
+    "w": 308,
+    "x": 760,
+    "y": 0
+   },
+   {
+    "color": "#e5534b",
+    "gid": "gAna",
+    "h": 159,
+    "name": "Analysis & reports",
+    "w": 458,
+    "x": 1140,
+    "y": 220
+   },
+   {
+    "color": "#9b6bdf",
+    "gid": "gMkt",
+    "h": 159,
+    "name": "Market data",
+    "w": 308,
+    "x": 380,
+    "y": 260
+   }
   ],
-  "hidden": [],
-  "icon": "📈",
-  "name": "Crypto desk",
-  "removed": []
+  "holders": [],
+  "lay": 2,
+  "links": [
+   {
+    "from": "desk-ops",
+    "id": "l0",
+    "label": "start, stop, restart",
+    "to": "paper-market-maker"
+   },
+   {
+    "from": "market-recorder",
+    "id": "l1",
+    "label": "live quotes",
+    "to": "paper-market-maker"
+   },
+   {
+    "from": "paper-market-maker",
+    "id": "l2",
+    "label": "simulated fills",
+    "to": "fill-log"
+   },
+   {
+    "from": "fill-trace",
+    "id": "l3",
+    "label": "odd fills",
+    "to": "research-notebook"
+   },
+   {
+    "from": "maker-share",
+    "id": "l4",
+    "label": "share by hour",
+    "to": "weekly-desk-stats"
+   },
+   {
+    "from": "market-context",
+    "id": "l5",
+    "label": "market context",
+    "to": "research-notebook"
+   },
+   {
+    "from": "risk-monitor",
+    "id": "l6",
+    "label": "breaches",
+    "to": "desk-reports"
+   }
+  ],
+  "notes": [
+   {
+    "gid": "",
+    "id": "f06043ee",
+    "text": "Decided 26 Nov: paper only, no real orders. Top of book + trades, no depth. Fill only when a trade prints through our price. Max position 0.25 BTC either way, daily loss 300 USD: flatten and stop quoting. Alerts on this computer.",
+    "w": 300,
+    "x": 1160,
+    "y": 420
+   }
+  ],
+  "pos": {
+   "c:components/markouts": {
+    "x": 20,
+    "y": 350
+   },
+   "c:components/paper_book": {
+    "x": 20,
+    "y": 250
+   },
+   "desk-dashboard": {
+    "x": 170,
+    "y": 44
+   },
+   "desk-ops": {
+    "x": 20,
+    "y": 44
+   },
+   "desk-reports": {
+    "x": 1160,
+    "y": 264
+   },
+   "fill-log": {
+    "x": 780,
+    "y": 44
+   },
+   "fill-trace": {
+    "x": 930,
+    "y": 44
+   },
+   "maker-share": {
+    "x": 780,
+    "y": 174
+   },
+   "market-context": {
+    "x": 550,
+    "y": 304
+   },
+   "market-recorder": {
+    "x": 400,
+    "y": 304
+   },
+   "paper-market-maker": {
+    "x": 400,
+    "y": 44
+   },
+   "research-notebook": {
+    "x": 1310,
+    "y": 264
+   },
+   "risk-monitor": {
+    "x": 550,
+    "y": 44
+   },
+   "weekly-desk-stats": {
+    "x": 1460,
+    "y": 264
+   }
+  }
+ },
+ "groups": [
+  {
+   "id": "gRun",
+   "ids": [
+    "desk-ops",
+    "desk-dashboard"
+   ],
+   "name": "Run the desk"
+  },
+  {
+   "id": "gStr",
+   "ids": [
+    "paper-market-maker",
+    "risk-monitor"
+   ],
+   "name": "Strategy"
+  },
+  {
+   "id": "gFil",
+   "ids": [
+    "fill-log",
+    "fill-trace",
+    "maker-share"
+   ],
+   "name": "Fills & checks"
+  },
+  {
+   "id": "gAna",
+   "ids": [
+    "desk-reports",
+    "research-notebook",
+    "weekly-desk-stats"
+   ],
+   "name": "Analysis & reports"
+  },
+  {
+   "id": "gMkt",
+   "ids": [
+    "market-recorder",
+    "market-context"
+   ],
+   "name": "Market data"
+  }
+ ],
+ "hidden": [],
+ "icon": "📈",
+ "name": "Crypto desk",
+ "removed": []
 }

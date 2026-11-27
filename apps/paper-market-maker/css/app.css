@@ -66,6 +66,16 @@ table.mo td em { display: block; font-style: normal; font-size: 12px; color: var
 select { padding: 5px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; font-size: 13px; }
 .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; font-variant-numeric: tabular-nums; margin-left: auto; }
 .legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 5px; }
+.chart.bars { height: 200px; max-width: 640px; }
+.bars .plot { position: absolute; inset: 0 0 22px 0; }
+.bars .zero { position: absolute; left: 0; right: 0; height: 1px; background: var(--muted); }
+.mobar { position: absolute; border-radius: 3px; min-height: 2px; }
+.mobar.buy, .legend i.sw.buy { background: var(--ok); }
+.mobar.sell, .legend i.sw.sell { background: var(--bad); }
+.legend i.sw { width: 10px; height: 10px; border-radius: 2px; }
+.bars .lab { white-space: nowrap; }
+.bars .lab.val { font-size: 12px; font-weight: 600; padding: 2px 0; }
+.bars .lab.val.up { color: var(--ok); } .bars .lab.val.down { color: var(--bad); }
 [hidden] { display: none !important; }
 .headrow.top { margin: 0 0 12px; }
 .headrow.top h2 { margin: 0; }

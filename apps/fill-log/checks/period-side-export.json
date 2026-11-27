@@ -1,0 +1,53 @@
+{
+  "steps": [
+    {
+      "do": "expect",
+      "text": "100 fills"
+    },
+    {
+      "do": "click",
+      "on": "Sells"
+    },
+    {
+      "do": "expect",
+      "text": "40 fills"
+    },
+    {
+      "do": "expect_not",
+      "text": "went through our bid"
+    },
+    {
+      "do": "click",
+      "on": "Last 7 days"
+    },
+    {
+      "do": "expect",
+      "text": "168 fills"
+    },
+    {
+      "do": "click",
+      "on": "All"
+    },
+    {
+      "do": "expect",
+      "text": "Showing the newest 300 of 420"
+    },
+    {
+      "do": "click",
+      "on": "Show more"
+    },
+    {
+      "do": "expect",
+      "text": "420 fills"
+    },
+    {
+      "do": "click",
+      "on": "Export CSV"
+    },
+    {
+      "do": "expect",
+      "text": "Totals: every fill of last 7 days"
+    }
+  ],
+  "page": "?try=sample"
+}

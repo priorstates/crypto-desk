@@ -1,6 +1,7 @@
 // Markouts: the table of averages (by side and horizon) and the running average through the day.
 // rows: the service's markout rows {side, price, size, local_ns, m1, m5, m30} (m: USD per BTC in the fill's favour).
 import { t } from './i18n.js';
+import { drawBars } from './mobars.js';
 
 export const HORIZONS = [1, 5, 30];
 const COLOR = { 1: 'var(--h1)', 5: 'var(--h5)', 30: 'var(--h30)' };
@@ -34,8 +35,10 @@ function running(rows, h) {
 export function renderMarkouts(els, rows, side) {
   rows = rows.slice().sort((a, b) => a.local_ns - b.local_ns);
   els.empty.hidden = rows.length > 0;
-  els.table.hidden = els.chartWrap.hidden = rows.length === 0;
+  els.table.hidden = els.chartWrap.hidden = els.barsWrap.hidden = rows.length === 0;
   if (!rows.length) return;
+  const buys = pick(rows, 'buy'), sells = pick(rows, 'sell');
+  drawBars(els.bars, HORIZONS.map(h => ({ label: t('mo' + h), buy: average(buys, h).bps, sell: average(sells, h).bps })));
   els.table.tBodies[0].innerHTML = [['buy', 'buys'], ['sell', 'sells'], ['all', 'allFills']].map(([s, label]) => {
     const part = pick(rows, s), a = HORIZONS.map(h => average(part, h));
     return `<tr><td>${t(label)}</td>${a.map(x => `<td class="${tone(x.bps)}"><b>${sgn(x.bps)} bps</b>

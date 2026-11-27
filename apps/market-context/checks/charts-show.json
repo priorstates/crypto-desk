@@ -1,0 +1,29 @@
+{
+  "steps": [
+    {
+      "do": "expect",
+      "text": "Desk PnL"
+    },
+    {
+      "do": "expect",
+      "text": "Realized volatility"
+    },
+    {
+      "do": "expect",
+      "text": "BTC-USD"
+    },
+    {
+      "do": "expect",
+      "text": "ETH-USD"
+    },
+    {
+      "do": "expect",
+      "text": "this hour"
+    },
+    {
+      "do": "expect_not",
+      "text": "No data from Market Recorder"
+    }
+  ],
+  "page": "?try=sample"
+}

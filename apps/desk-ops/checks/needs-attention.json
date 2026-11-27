@@ -1,0 +1,17 @@
+{
+  "steps": [
+    {
+      "do": "expect",
+      "text": "3 need attention"
+    },
+    {
+      "do": "expect",
+      "text": "No heartbeat for"
+    },
+    {
+      "do": "expect",
+      "text": "Stopped (Risk Monitor)"
+    }
+  ],
+  "page": "?try=trouble"
+}

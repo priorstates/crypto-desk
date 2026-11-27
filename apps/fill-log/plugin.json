@@ -1,0 +1,15 @@
+{
+  "name": "Fill Log",
+  "icon": "📒",
+  "description": "Every simulated fill from the Paper Market Maker, newest first, for today or the last 7 days, with totals and CSV export. Paper only.",
+  "entry": "index.html",
+  "version": 1,
+  "kit": 1,
+  "permissions": [],
+  "role": "viewer",
+  "runs": [
+    "computer"
+  ],
+  "wide": true,
+  "skill": "A viewer page with no service and no backend. Paper only: it only reads streams; nothing here sends an order or starts / stops a service. It reads paper-market-maker's stream 'fills' (t, id, side buy|sell, price, size, reason through|flatten, fill_pnl, position, trade_price, trade_size, local_ns) for the last DEFAULTS.days UTC days and follows new rows; a fill's time is local_ns, else t. For 'flatten' fills it looks up the stop's cause in the stream 'events' (type stop, by loss|risk|person). Days and times are UTC, like the maker's own day. Totals (fills, bought, sold, volume, realised PnL = sum of fill_pnl) cover the chosen period, not the side filter. The table shows DEFAULTS.pageRows rows at a time; Export CSV writes every row of the chosen period and side. App id, stream names, days and page size are in DEFAULTS in js/data.js. kv 'view': {range: 'today'|'week', side: 'all'|'buy'|'sell'}, the person's last choice. ?try=empty and ?try=sample show the page without data / with made-up fills, for checking only. Card line: kit.glance (fills today)."
+}

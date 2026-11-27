@@ -1,0 +1,20 @@
+{
+  "steps": [
+    {
+      "do": "wait",
+      "value": "3"
+    },
+    {
+      "do": "expect",
+      "text": "All running"
+    },
+    {
+      "do": "expect",
+      "text": "Paper Market Maker"
+    },
+    {
+      "do": "expect_not",
+      "text": "No data yet"
+    }
+  ]
+}

@@ -107,7 +107,8 @@ function render() {
   drawChart($('chart'), pts, { limit: s.daily_loss_limit, emptyText: t('chartEmpty'), fills: dots });
   $('fillLegend').hidden = pts.length < 2 || !dots.length;
 
-  renderMarkouts({ empty: $('moEmpty'), table: $('moTable'), chartWrap: $('moChartWrap'), legend: $('moLegend'), chart: $('moChart') },
+  renderMarkouts({ empty: $('moEmpty'), table: $('moTable'), chartWrap: $('moChartWrap'),
+    barsWrap: $('moBarsWrap'), bars: $('moBars'), legend: $('moLegend'), chart: $('moChart') },
     markouts.filter(m => m.day === today && m.reason === 'through'), $('moSide').value);
 
   const rows = fills.filter(f => f.day === today).slice(-30).reverse();

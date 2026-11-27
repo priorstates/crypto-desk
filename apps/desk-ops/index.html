@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desk Status</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="ds-page">
+  <div id="summary" class="ds-summary is-wait">
+    <span class="ds-dot"></span>
+    <h1 id="headline"></h1>
+  </div>
+  <p id="sub" class="ds-sub"></p>
+
+  <div class="ds-board" aria-live="polite">
+    <div class="ds-row ds-head">
+      <span data-t="colService"></span>
+      <span data-t="colHealth"></span>
+      <span data-t="colRunning"></span>
+      <span data-t="colRestarts"></span>
+      <span data-t="colBeat"></span>
+      <span></span>
+    </div>
+    <div id="rows"></div>
+  </div>
+
+  <p class="ds-foot" data-t="foot"></p>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

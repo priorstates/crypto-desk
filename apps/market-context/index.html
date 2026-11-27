@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Hours</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="mh-page">
+  <div class="mh-top">
+    <h1 data-t="title">Market Hours</h1>
+    <span class="mh-pill" data-t="paper">Paper only</span>
+    <span class="mh-live" id="live"></span>
+  </div>
+  <p class="mh-sub" id="sub"></p>
+  <p class="mh-banner" id="banner" hidden></p>
+  <section class="mh-panel" id="panel">
+    <div class="mh-readout" id="readout"></div>
+    <div class="mh-row">
+      <div class="mh-lab"><h2 data-t="pnl"></h2><small data-t="pnlUnit"></small><div class="mh-stats" id="s-pnl"></div></div>
+      <div class="mh-plot signed" id="p-pnl"></div>
+    </div>
+    <div class="mh-row">
+      <div class="mh-lab"><h2 data-t="spread"></h2><small id="u-spread"></small><div class="mh-stats" id="s-spread"></div></div>
+      <div class="mh-plot" id="p-spread"></div>
+    </div>
+    <div class="mh-row">
+      <div class="mh-lab"><h2 data-t="vol"></h2><small data-t="volUnit"></small><div class="mh-stats" id="s-vol"></div></div>
+      <div class="mh-plot" id="p-vol"></div>
+    </div>
+    <div class="mh-row">
+      <div class="mh-lab"><h2 data-t="rate"></h2><small data-t="rateUnit"></small><div class="mh-stats" id="s-rate"></div></div>
+      <div class="mh-plot" id="p-rate"></div>
+    </div>
+    <div class="mh-row mh-axis"><div class="mh-lab"></div><div class="mh-plot" id="axis"></div></div>
+  </section>
+  <p class="mh-foot"><span data-t="legend"></span> <span data-t="method"></span></p>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

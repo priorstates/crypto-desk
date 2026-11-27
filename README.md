@@ -23,16 +23,27 @@ public market data feed and simulates its own fills.
 | 🛡️ Risk Monitor | service on your server | Independent of the strategy: rebuilds position and day PnL from the fills, checks position and loss limits and feed staleness, and stops and flattens the paper strategy on a breach. |
 | 📨 Desk Reports | service on your server | Daily and weekly reports (PnL, fills, markouts by side, risk events, feed gaps, disk), plus an alert when a limit is hit or a feed goes stale and again when it clears. By email (SMTP) and Slack (webhook). |
 | 🔬 Research Notebook | in Studio | Copies the recorded files and the paper fills from the server over ssh (read only) and studies spreads, volatility, and how prices move after trades. |
+| 🚦 Desk Status | in Studio | Each service's health, running time, restarts and last heartbeat on one page, with a button to open its app. |
+| 📊 Desk Today | in Studio | The desk on one screen: today's PnL with its trend, position, BTC-USD and ETH-USD mids, fills, the risk state and the feed's age. |
+| 📒 Fill Log | in Studio | Every simulated fill, newest first, for today or the last 7 days, with totals, a filter by side and Export CSV. |
+| 🔎 Fill Trace | in Studio | The story of one fill: the mid before it and 1, 5 and 30 s after, what the maker was quoting, and risk events within a minute. |
+| 📶 Maker Share | in Studio | Simulated fills hour by hour today, against the market's trading where the recorder publishes it. |
+| 📅 Desk Week | in Studio | The last 7 days, one row per day: PnL, fills, average markouts, risk breaches and stale-feed events. |
+| 🌤️ Market Hours | in Studio | BTC-USD and ETH-USD hour by hour: average spread, realized volatility and trade rate, beside the desk's PnL. |
 
 Each service app also has a page in Studio for status, settings and charts. Every service uses only the Python
-standard library.
+standard library. The seven apps after the Research Notebook only read the services' data through Studio, so there is
+nothing to deploy for them.
+
+![The desk in Studio: twelve apps in five groups on one drawing, every app open as a tab](img/desk-drawing.jpg)
 
 ## Open it in Studio
 
 1. Download and install [PriorStates Studio](https://priorstates.com/hub.html) for your computer.
 2. In Studio: **Add a space** → **Keep it: From a git repository** → Repository address:
    `https://github.com/priorstates/crypto-desk` → **Clone and open**.
-3. The space opens with its drawing: the five apps, how data flows between them, and the decisions made so far.
+3. The space opens with its drawing: twelve apps in five groups (run the desk, strategy, fills and checks, analysis and
+   reports, market data), how data flows between them, and the decisions made so far.
 
 Until the services run on a server, the service apps' pages show sample data.
 

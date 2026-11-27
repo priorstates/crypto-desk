@@ -1,0 +1,12 @@
+{
+  "name": "Fill Trace",
+  "icon": "🔎",
+  "description": "The story of one simulated fill: the mid before and 1, 5 and 30 s after, the quotes then, and risk events within a minute.",
+  "entry": "index.html",
+  "version": 2,
+  "permissions": [],
+  "runs": ["computer"],
+  "role": "viewer",
+  "wide": true,
+  "skill": "A viewer page only: no service, no backend, nothing saved, and nothing that sends an order (paper only). It reads other apps' streams through Studio (forge.stream.list first, then read and subscribe): paper-market-maker \"fills\" (the list, newest first; a fill's time is local_ns, UTC ns), \"markouts\" (matched to a fill by id + local_ns: mid, mid1, mid5, mid30, m1, m5, m30), \"status\" (the 2 s heartbeat, read for the minute each side of the chosen fill: mid, bid, ask, quote_bid, quote_ask, state, position; kept 2 days only) and \"events\" (stop, resume, feed_stale, feed_ok); risk-monitor \"events\" (merged by id; a breach at `opened`, a recovery at `recovered`). Field lists are in those apps' remote/README.md. Settings are the DEFAULTS object in js/app.js: lookback_h (how far back the fill list goes), max_fills (how many it shows), window_s (seconds each side of the fill on the timeline and for events), settle_s (the fill opened by default is the newest one at least this old, so its markouts are measured), product and max_rows. A stream read returns the NEWEST `limit` rows after `since` (there is no end time), so the read for a fill's minute uses since = fill - window and a limit that reaches up to now ((age + window) / the stream's interval, with a margin). When the maker's status has no rows for that minute, the mid alone comes from market-recorder \"heartbeat\" (products.<product>.quote bid and ask, every 5 s). ?n=K opens the K+1th newest fill (a check). ?sample shows made-up rows for a layout check."
+}

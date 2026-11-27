@@ -1,0 +1,13 @@
+{
+  "name": "Desk Today",
+  "icon": "📊",
+  "description": "The paper desk on one screen: today's PnL and position, BTC-USD and ETH-USD mids, fills, risk state and feed age. Paper only.",
+  "entry": "index.html",
+  "version": 1,
+  "kit": 1,
+  "permissions": [],
+  "role": "viewer",
+  "runs": ["computer"],
+  "wide": true,
+  "skill": "A viewer page with no service and no backend. Paper only: it only reads streams, and nothing here sends an order or starts / stops a service. Seven tiles. PnL today, position and fills today come from paper-market-maker's stream 'status' (day_pnl, position, avg_price, state, fills_today, volume_today); when that has no row, from risk-monitor's 'state' (same field names). The PnL trend line is today's (UTC day) rows of paper-market-maker's 'pnl' stream (t, day, day_pnl) plus the live value. Last fill: newest row of 'fills'. Mids: (bid + ask) / 2 of market-recorder's 'heartbeat' products.<P>.quote; BTC falls back to status.mid. Risk: risk-monitor 'state' checks.<check>.state == 'breach' and stop. Feed age: heartbeat products.<P>.age_s as of the row; once the row itself is older than DEFAULTS.staleS, the time since last_ns. A row older than DEFAULTS.staleS marks its tiles 'no update'. App ids, stream names, products and thresholds are in DEFAULTS in js/data.js. ?try=empty and ?try=breach show the page without data / with a made-up breach, for checking only. Nothing is saved (no kv keys). Card line: kit.glance (day PnL and risk state; attention on a breach or stop)."
+}

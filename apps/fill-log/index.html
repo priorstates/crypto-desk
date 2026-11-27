@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fill Log</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="fl-page">
+  <header class="fl-top">
+    <h1 data-t="title"></h1>
+    <span class="fl-paper" data-t="paper"></span>
+    <div class="fl-tools">
+      <div class="fl-seg" id="range" role="group" data-label="period">
+        <button type="button" data-v="today" data-t="today"></button>
+        <button type="button" data-v="week" data-t="week"></button>
+      </div>
+      <div class="fl-seg" id="side" role="group" data-label="side">
+        <button type="button" data-v="all" data-t="all"></button>
+        <button type="button" data-v="buy" data-t="buys"></button>
+        <button type="button" data-v="sell" data-t="sells"></button>
+      </div>
+      <button type="button" id="export" class="fl-btn" data-t="export"></button>
+    </div>
+  </header>
+
+  <p id="cover" class="fl-cover" hidden></p>
+
+  <section class="fl-totals" aria-live="polite">
+    <div class="fl-tile" id="tFills"><h2 data-t="tFills"></h2><div class="fl-v">—</div><p class="fl-s"></p></div>
+    <div class="fl-tile" id="tBought"><h2 data-t="tBought"></h2><div class="fl-v">—</div><p class="fl-s"></p></div>
+    <div class="fl-tile" id="tSold"><h2 data-t="tSold"></h2><div class="fl-v">—</div><p class="fl-s"></p></div>
+    <div class="fl-tile" id="tVolume"><h2 data-t="tVolume"></h2><div class="fl-v">—</div><p class="fl-s"></p></div>
+    <div class="fl-tile" id="tPnl"><h2 data-t="tPnl"></h2><div class="fl-v">—</div><p class="fl-s"></p></div>
+  </section>
+
+  <main class="fl-list">
+    <div class="fl-scroll" id="scroll">
+      <table>
+        <thead><tr>
+          <th data-t="cTime"></th><th data-t="side"></th><th class="fl-n" data-t="cPrice"></th>
+          <th class="fl-n" data-t="cSize"></th><th data-t="cWhy"></th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p id="empty" class="fl-empty" hidden></p>
+      <button type="button" id="more" class="fl-btn fl-more" data-t="more" hidden></button>
+    </div>
+    <p id="count" class="fl-count"></p>
+  </main>
+
+  <p class="fl-foot" data-t="foot"></p>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

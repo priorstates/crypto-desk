@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desk Today</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="dd-page">
+  <header class="dd-top">
+    <h1 data-t="title"></h1>
+    <span class="dd-paper" data-t="paper"></span>
+    <span id="day" class="dd-day"></span>
+  </header>
+  <p id="empty" class="dd-empty" hidden></p>
+
+  <main class="dd-grid" aria-live="polite">
+    <section class="dd-tile dd-wide" id="pnl">
+      <h2 data-t="pnl"></h2>
+      <div class="dd-pnl">
+        <div><div class="dd-big"><span class="dd-v">—</span><small class="dd-u"></small></div><p class="dd-s"></p></div>
+        <svg id="trend" class="dd-trend" viewBox="0 0 300 70" preserveAspectRatio="none" role="img">
+          <line class="dd-zero" x1="0" x2="300" y1="35" y2="35"/><polyline fill="none" points=""/>
+        </svg>
+      </div>
+    </section>
+    <section class="dd-tile" id="pos"><h2 data-t="position"></h2>
+      <div class="dd-big"><span class="dd-v">—</span><small class="dd-u"></small></div><p class="dd-s"></p></section>
+    <section class="dd-tile" id="btc"><h2 data-t="btc"></h2>
+      <div class="dd-big"><span class="dd-v">—</span><small class="dd-u"></small></div><p class="dd-s"></p></section>
+    <section class="dd-tile" id="eth"><h2 data-t="eth"></h2>
+      <div class="dd-big"><span class="dd-v">—</span><small class="dd-u"></small></div><p class="dd-s"></p></section>
+    <section class="dd-tile" id="fills"><h2 data-t="fills"></h2>
+      <div class="dd-big"><span class="dd-v">—</span><small class="dd-u"></small></div><p class="dd-s"></p></section>
+    <section class="dd-tile dd-wide" id="risk"><h2 data-t="risk"></h2>
+      <div class="dd-big"><span class="dd-dot"></span><span class="dd-v">—</span><small class="dd-u"></small></div><p class="dd-s"></p></section>
+    <section class="dd-tile" id="feed"><h2 data-t="feed"></h2>
+      <div class="dd-big"><span class="dd-v">—</span><small class="dd-u"></small></div><p class="dd-s"></p></section>
+  </main>
+
+  <p class="dd-foot" data-t="foot"></p>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

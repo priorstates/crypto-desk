@@ -1,0 +1,13 @@
+{
+  "name": "Desk Week",
+  "icon": "📅",
+  "description": "The paper desk's last 7 days: PnL, fills, markouts, risk breaches and stale-feed events per day, with the week's totals. Paper only.",
+  "entry": "index.html",
+  "version": 1,
+  "kit": 1,
+  "permissions": [],
+  "role": "viewer",
+  "runs": ["computer"],
+  "wide": true,
+  "skill": "A viewer page with no service and no backend. Paper only: it only reads streams, and nothing here sends an order or starts / stops a service. One row per UTC day for the last DEFAULTS.days days (js/data.js), newest first, and the week's totals in cards above. Sources, all through forge.stream (list first, then read): paper-market-maker pnl (the day's last row = day PnL; a day beyond reach = the difference of two 'day' rows' day_start in its events stream), markouts (one row per fill, attributed to the fill's own UTC day from local_ns: fills per day, and m1/m5/m30 averaged by fill size in USD per BTC, 'flatten' fills left out of the averages), status (fills_today for today's exact count); risk-monitor events (one event per id, newest row wins, counted on the day it opened: checks in DEFAULTS.staleChecks = stale-feed events, every other check = risk breaches). Limit: Studio gives a page only the newest 5000 rows of a stream (DEFAULTS.readLimit), so fills and markouts of days before that reach show a dash, and a day partly in reach shows its markouts with * and a note. A day with no rows in any stream reads 'No data'; no streams at all shows the empty state. Today's PnL follows the pnl stream (subscribe); everything reloads every DEFAULTS.refreshS seconds. Nothing is saved (no kv keys). Card line: kit.glance with the week's PnL and the number of breaches. Labels in five languages in js/i18n.js."
+}

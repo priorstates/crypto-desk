@@ -1,0 +1,62 @@
+/* Class names carry a ds- prefix so Studio Kit's own styles never reach them. */
+:root {
+  --bg: #f6f7f9; --card: #fff; --ink: #18202b; --muted: #667085; --line: #e3e7ed;
+  --ok: #17803d; --ok-bg: #e7f6ec; --warn: #a15c00; --warn-bg: #fdf1dc;
+  --bad: #b42318; --bad-bg: #fde8e6; --wait: #667085; --wait-bg: #eceff3; --accent: #2456c9;
+}
+:root[data-theme="dark"] {
+  --bg: #12151a; --card: #1b2028; --ink: #e8ecf2; --muted: #98a2b3; --line: #2b323d;
+  --ok: #5fd08a; --ok-bg: #16301f; --warn: #f0b354; --warn-bg: #36290f;
+  --bad: #ff8a80; --bad-bg: #3a1a18; --wait: #98a2b3; --wait-bg: #252b35; --accent: #8fb0ff;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; max-width: none; background: var(--bg); color: var(--ink);
+  font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+.ds-page { max-width: 1180px; margin: 0 auto; padding: 28px 24px 32px; }
+
+.ds-summary { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px 12px 16px;
+  border-radius: 14px; background: var(--wait-bg); color: var(--wait); }
+.ds-summary h1 { margin: 0; font-size: 26px; font-weight: 650; letter-spacing: -.01em; color: inherit; }
+.ds-summary.is-ok { background: var(--ok-bg); color: var(--ok); }
+.ds-summary.is-warn { background: var(--warn-bg); color: var(--warn); }
+.ds-summary.is-bad { background: var(--bad-bg); color: var(--bad); }
+.ds-dot { width: 12px; height: 12px; border-radius: 50%; background: currentColor; flex: none; }
+.ds-sub { margin: 10px 2px 22px; color: var(--muted); }
+
+.ds-board { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.ds-row { display: grid; grid-template-columns: minmax(190px, 1.2fr) minmax(240px, 2.4fr) 110px 90px 120px 96px;
+  gap: 16px; align-items: center; padding: 14px 18px; border-top: 1px solid var(--line); color: var(--ink); }
+.ds-row.ds-head { border-top: 0; padding: 10px 18px; font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted); }
+.ds-who { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ds-icon { font-size: 24px; line-height: 1; }
+.ds-who b { display: block; font-weight: 600; color: var(--ink); }
+.ds-who small, .ds-note { color: var(--muted); font-size: 13px; }
+.ds-note { margin-top: 2px; overflow-wrap: anywhere; }
+.ds-state { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+.ds-state .ds-dot { width: 10px; height: 10px; }
+.is-ok .ds-state { color: var(--ok); } .is-warn .ds-state { color: var(--warn); }
+.is-bad .ds-state { color: var(--bad); } .is-wait .ds-state { color: var(--wait); }
+.ds-num { font-variant-numeric: tabular-nums; color: var(--ink); }
+.ds-num.ds-none { color: var(--muted); }
+.ds-cell-label { display: none; }
+.ds-act { text-align: right; }
+
+button.ds-open { font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 9px; cursor: pointer; width: auto;
+  min-height: 0; border: 1px solid var(--line); background: var(--card); color: var(--accent); white-space: nowrap; }
+button.ds-open:hover { border-color: var(--accent); }
+button.ds-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.ds-open:disabled { color: var(--muted); cursor: default; border-color: var(--line); }
+
+.ds-foot { margin: 14px 2px 0; color: var(--muted); font-size: 13px; }
+
+@media (max-width: 860px) {
+  .ds-page { padding: 18px 14px; }
+  .ds-summary h1 { font-size: 21px; }
+  .ds-row.ds-head { display: none; }
+  .ds-row { grid-template-columns: 1fr 1fr 1fr; gap: 10px 14px; }
+  #rows .ds-row:first-child { border-top: 0; }
+  .ds-who, .ds-health, .ds-act { grid-column: 1 / -1; }
+  .ds-cell-label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  button.ds-open { width: 100%; min-height: 44px; }
+}
