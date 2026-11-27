@@ -5,6 +5,12 @@ Open it in your own Studio, point it at your own server, and change it by asking
 
 **Slides:** [how this desk was built, run and shared in Studio](slides/crypto_desk_deck.pdf) (24 pages, PDF).
 
+[![A day on the desk: a 2-minute video](video/crypto-desk-day-poster.jpg)](https://priorstates.com/assets/qt/crypto-desk-day-v1.mp4)
+
+**[Watch a day on the desk](https://priorstates.com/assets/qt/crypto-desk-day-v1.mp4)** (2 min, narrated): the whole
+desk on one drawing, each app opened from it, a test report sent, a study run, and a change made by asking. The file
+is also in [`video/`](video/crypto-desk-day.mp4); [slides](slides/crypto_desk_deck.pdf).
+
 **Paper trading only.** No exchange account, no API key, and no code that sends an order. The desk reads Coinbase's
 public market data feed and simulates its own fills.
 
@@ -75,6 +81,7 @@ text by hand.
 ```
 studio-space.json   the space: name, icon, groups and the drawing
 NOTES.md            the space's notes (its goal)
+slides/, video/     the deck and the video of the desk
 apps/<id>/          one folder per app: plugin.json, index.html, js/, css/, and remote/ for the service code;
                     deploy.json says how a service app is deployed (folder, service, settings form)
                     _components/ are pinned copies of shared parts (paper_book, markouts)
